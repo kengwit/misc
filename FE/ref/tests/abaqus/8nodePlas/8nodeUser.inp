@@ -1,0 +1,71 @@
+*HEADING
+ABAQUS Static Analysis Set
+*NODE, NSET=GLOBAL
+       1,          0.,          0.,          0.
+       2,          1.,          0.,          0.
+       3,          1.,          1.,          0.
+       4,          0.,          1.,          0.
+       5,         0.5,          0.,          0.
+       6,          1.,         0.5,          0.
+       7,         0.5,          1.,          0.
+       8,          0.,         0.5,          0.
+** NODES = 8
+** TYPE=U1001
+** PROPERTIES = rho,E,nu (3 properties for solid)
+** COORDINATES = 2 at each node
+** VARIABLES = 18
+** UNSYMM = just use it for later
+** All dofs are displacements 1,2
+*User Element,Nodes=8,Type=U1001,Iproperties=1,Properties=2,Coordinates=2,Variables=18,Unsymm
+1,2
+*ELEMENT, TYPE=U1001
+      1,      1,      2,      3,      4,      5,      6,      7,      8
+*Elset, elset=user_elements, generate
+1,1,1
+**
+** Make the dummy mesh used for visualization.  These dummy elements
+**  use the same nodes as the real mesh, but note the offset in element
+**  numbering of 10000, that shows up again in the UVARM subroutine.
+**
+*Element, type=CPE8
+ 10001,      1,      2,      3,      4,      5,      6,      7,      8
+*Elset, elset=dummy_elements, generate
+10001,10001,1
+************************************************************************
+**			MATERIAL DEFINITION
+************************************************************************
+**
+** Material properties for the real material
+**
+*uel property,elset=user_elements
+0.,0.,1
+**
+** Material properties for the dummy sections
+**
+*Solid section, elset=dummy_elements, material=Material-dummy
+*Material, name=Material-dummy
+*Elastic
+1.,0.3
+**
+*BOUNDARY
+1, 1, 2, 0.0
+4, 1, 1, 0.0
+8, 1, 1, 0.0
+****************************************
+*STEP, INC=20000
+****************************************
+*STATIC
+0.1, 1.0, 0.1, 0.1
+**
+** Apply displacement at nodes 2,3,6
+*BOUNDARY
+2, 1,, 0.01 
+3, 1,, 0.01 
+6, 1,, 0.01 
+**
+*OUTPUT, FIELD, FREQ=1
+*Node Output, nset=GLOBAL
+ U
+***Element Output
+** S,E
+*END STEP

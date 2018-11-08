@@ -1,0 +1,103 @@
+*HEADING
+Abaqus version of HYPLAS Prob 07_5_1
+** Internally pressurized cylinder
+** Cylindrical coord system (R,theta,Z)
+*NODE, NSET=GLOBAL, SYSTEM=C
+       1,    100.000,    0.000,  0.0
+       2,    100.000,   15.000,  0.0
+       3,    100.000,   30.000,  0.0
+       4,    108.000,    0.000,  0.0
+       5,    108.000,   30.000,  0.0
+       6,    116.000,    0.000,  0.0
+       7,    116.000,   15.000,  0.0
+       8,    116.000,   30.000,  0.0
+       9,    126.000,    0.000,  0.0
+      10,    126.000,   30.000,  0.0
+      11,    136.000,    0.000,  0.0
+      12,    136.000,   15.000,  0.0
+      13,    136.000,   30.000,  0.0
+      14,    150.000,    0.000,  0.0
+      15,    150.000,   30.000,  0.0
+      16,    164.000,    0.000,  0.0
+      17,    164.000,   15.000,  0.0
+      18,    164.000,   30.000,  0.0
+      19,    182.000,    0.000,  0.0
+      20,    182.000,   30.000,  0.0
+      21,    200.000,    0.000,  0.0
+      22,    200.000,   15.000,  0.0
+      23,    200.000,   30.000,  0.0
+*TRANSFORM,NSET=GLOBAL,TYPE=C
+          0.,          0.,          0.,          0.,          0.,          1.
+*NSET,NSET=OUTER
+21
+** Note: numbering below is different than HYPLAS
+** Abaqus numbers the corner nodes first followed by mid nodes
+*Element, type=CPE8R
+ 10001,  1,  6,  8,  3,  4,  7,  5,  2
+ 10002,  6, 11, 13, 8,  9, 12, 10,  7
+ 10003, 11, 16, 18, 13, 14, 17, 15, 12
+ 10004, 16, 21, 23, 18, 19, 22, 20, 17
+*Elset, elset=dummy_elements, generate
+10001,10004,1
+************************************************************************
+**			MATERIAL DEFINITION
+************************************************************************
+**
+** Material properties for the dummy sections
+**
+*Solid section, elset=dummy_elements, material=Material-dummy
+1.0
+*Material, name=Material-dummy
+*Elastic
+210.,0.3
+*Plastic
+0.24
+**
+*BOUNDARY
+    1,    2
+    3,    2
+    4,    2
+    5,    2
+    6,    2
+    8,    2
+    9,    2
+   10,    2
+   11,    2
+   13,    2
+   14,    2
+   15,    2
+   16,    2
+   18,    2
+   19,    2
+   20,    2
+   21,    2
+   23,    2
+*AMPLITUDE,NAME=RAMP
+ 0.0,0.0
+ 0.2,0.10
+ 0.4,0.14
+ 0.6,0.18
+ 0.8,0.19
+ 1.0,0.192
+*ORIENTATION,NAME=CYL_COORD_SYS,SYSTEM=Cylindrical 
+          0.,          0.,          0.,          0.,          0.,          1.
+****************************************
+*STEP, INC=20000
+****************************************
+*STATIC
+0.2, 1.0, 0.2, 0.2
+**
+*DLOAD, AMPLITUDE=RAMP
+10001,P4,1.
+*OUTPUT, FIELD, FREQ=1
+*Node Output, nset=GLOBAL
+ U
+***Element Output
+** S,E
+** 
+** HISTORY OUTPUT: H-Output-1
+** 
+*Output, HISTORY, FREQ=1
+*node output, nset=OUTER
+U1
+*END STEP

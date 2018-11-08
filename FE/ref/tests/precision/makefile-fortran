@@ -1,0 +1,23 @@
+
+LIBS = 
+
+GCC = gfortran
+
+PROGNAME = main
+
+MAIN = main
+
+MYFLAGS = -O3
+
+OBJS = $(MAIN).o
+			
+$(PROGNAME): $(OBJS)
+	$(GCC) $(MYFLAGS) -o $(PROGNAME) $(OBJS) $(LIBS)
+
+$(MAIN).o: $(MAIN).for 
+	$(GCC) $(MYFLAGS) -c $(MAIN).for
+
+
+clean:
+	rm -f *~ *.o $(PROGNAME)
+

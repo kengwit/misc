@@ -1,0 +1,87 @@
+*HEADING
+ABAQUS Static Analysis Set
+*PARAMETER
+** neo-Hookean parameters for the rubber substrate material
+**G   = 1.e3  # shear modulus
+**D   = 1.0    # will enforce incomprssibility
+**C10 = 0.5*G  # C10 parameter Abaqus is expecting
+*NODE, NSET=GLOBAL
+       1,          0.,          0.,          0.
+       2,          1.,          0.,          0.
+       3,          1.,          1.,          0.
+       4,          0.,          1.,          0.
+*NSET, NSET= reac
+1,4
+** NODES = 4
+** TYPE=U1 (plane strain)
+** IPROPERTIES = 9 (number of state vars per integration point)
+** PROPERTIES  = E,nu (2 properties for linear elasticity)
+** COORDINATES = 2 at each node
+** VARIABLES = 4*9 = 36
+** UNSYMM = use unsymmetric solver for F-bar method
+** All dofs are displacements 1,2
+*User Element,Nodes=4,Type=U1,Iproperties=1,Properties=2,Coordinates=2,Variables=36,Unsymm
+1,2
+*ELEMENT, TYPE=U1
+      1,      1,      2,      3,      4
+*Elset, elset=user_elements, generate
+1,1,1
+**
+** Make the dummy mesh used for visualization.  These dummy elements
+**  use the same nodes as the real mesh, but note the offset in element
+**  numbering of 10000, that shows up again in the UVARM subroutine.
+**
+*Element, type=CPE4
+ 10001,      1,      2,      3,      4
+*Elset, elset=dummy_elements, generate
+10001,10001,1
+************************************************************************
+**			MATERIAL DEFINITION
+************************************************************************
+**
+** Material properties for the real material
+**
+** properties are: 
+** PROPS[0] = lambda (K)
+** PROPS[1] = mu (G)
+** lambda/mu = 2 --> poisson ~ 0.3333
+** lambda/mu = 1000 --> poisson ~ 0.4995
+** nu = (lambda/mu)/(2*(lambda/mu + 1))
+*uel property,elset=user_elements
+1.e4,1.0,9
+**
+** Material properties for the dummy sections
+**
+*Solid section, elset=dummy_elements, material=Material-dummy
+*Material, name=Material-dummy
+*Elastic
+1.e-20,0.
+**
+****************************************
+*STEP, UNSYMM=YES, NLGEOM=YES, INC=50000
+****************************************
+*STATIC
+0.01, 1.0, 0.01, 0.01
+**
+***CONTROLS, PARAMETERS=FIELD
+**1.e-6
+*BOUNDARY
+1, 1, 2, 0.0
+4, 1, 1, 0.0
+**** Apply displacement at nodes 2,3
+***BOUNDARY
+**2, 1,, 1.0 
+**3, 1,, 1.0 
+**
+*CLOAD
+2, 1, 1.0
+3, 1, 1.0
+*OUTPUT, FIELD, FREQ=1
+*Node Output, nset=GLOBAL
+ U
+***Element Output
+** S,E
+*OUTPUT, HISTORY, FREQ=1
+*Node Output, nset=reac
+RF
+*END STEP
