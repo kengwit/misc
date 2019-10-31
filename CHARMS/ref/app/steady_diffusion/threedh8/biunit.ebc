@@ -1,0 +1,10 @@
+function "0"
+! faces normal to z
+box -1 -1 -1 1 1 -1 inflate 0.001
+box -1 -1 1 1 1 1 inflate 0.001
+! faces normal to x
+box -1 -1 -1 -1 1 1 inflate 0.001
+box 1 -1 -1 1 1 1 inflate 0.001
+! faces normal to y
+box -1 -1 -1 1 -1 1 inflate 0.001
+box -1 1 -1 1 1 1 inflate 0.001

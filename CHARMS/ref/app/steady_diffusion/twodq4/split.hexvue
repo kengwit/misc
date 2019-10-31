@@ -1,0 +1,25 @@
+! 
+NEWFRAME WIDTH 480 HEIGHT 480 X 100 Y 100
+edgeflag on
+edgecolor white
+hvuchattribs
+hvuload split-adapt2.hvu
+!
+HVUPICKSET 0 ! von Mises
+HVUSETDISP 0 0 0 sxsysz 0 0 3
+! 
+view axes off
+view bground grey50
+view top
+layer on   0
+layer on   1
+layer off 11
+layer on  12
+layer 0
+!
+fit
+RENDER SHADE
+render ldir -1 2 3
+! fringe 1 18
+VIEW REDRAW
+! HVUQUIT

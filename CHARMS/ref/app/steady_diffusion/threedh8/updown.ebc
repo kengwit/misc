@@ -1,0 +1,4 @@
+function "0"
+box -1 -1 -1 1 1 -1 inflate 0.001
+function "0.5"
+box -1 -1 1 1 1 1 inflate 0.001

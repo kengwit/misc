@@ -1,0 +1,153 @@
+  obj algorithms
+    obj wave
+      obj bubl ! sinusoidal transverse wave
+        param gmesh = m1
+        param gsubmeshes = sm1
+        obj initial_conditions
+          param u0 = "" "" ""
+          param v0 = "" "" ""
+        end
+        obj time_step
+          param nadapt = 100
+          param dt = 0
+          param tstart = 0
+          param tend   = 3e-6
+          param red_fact = .5
+          param back_track_frac = 1
+        end
+        obj watchpoints
+          param list = "" 
+          param time_between_outputs = 0 
+          param time_between_graphics = 2e-8 ! .075 ! disabled xhexvue graphics
+          param buffer_size = 20
+          param force_back_track_output = false
+          obj w1
+           param coord = 0 0 0
+           param var = "ux" "uy" "uz" "vx" "vy" "vz" "von_mises" "sigma_xx" "sigma_yy" "sigma_zz" "sigma_xy" "sigma_xz" 
+          end
+        end
+        obj gcell_groups
+          obj gg1
+            param implementation = wave_t4_opt
+            param material = steel
+          end
+          obj gg2
+            param implementation = wave_traction_t3
+            param material = fictitious
+            param traction_load = trac1
+          end
+        end
+        obj essential_bcs
+          param ebc_file = bubl.ebc
+        end
+        obj adapt
+          param adaptive = false
+        end
+        obj motion_pict
+          param show = false
+          param scale = 100
+        end
+      end
+    end
+    obj hexvue
+      obj hexvue
+        obj gcell_groups
+          obj gg1
+            param implementation = default
+          end
+          obj gg2
+            param implementation = default
+          end
+        end
+        param hexvue_file = bubl.hvu
+      end
+    end
+    obj xhexvue
+      obj bubl
+        obj gcell_groups
+          obj gg1
+            param implementation = default
+          end
+          obj gg2
+            param implementation = default
+          end
+        end
+        param xhexvue_file = bubl.xhvu
+        param quants       = "ux" "uy" "uz" "vx" "vy" "vz" "von_mises" "sigma_xx" "sigma_yy" "sigma_zz" "sigma_xy" "sigma_xz"
+      end
+    end
+    obj errest
+      obj bubl
+        obj gcell_groups
+          obj gg1
+            param implementation = default
+            param material = steel
+          end
+          obj gg2
+            param implementation = default
+            param material = fictitious
+          end
+        end'
+      end
+    end
+    obj refine
+      obj bubl
+        param true_hierarchical = false
+        param errestim = energy 
+        param ref_fraction = 1
+        param h_over_hbar_ref = 1.2
+        param h_over_hbar_unref = 0.75
+        param max_ref_level = 3
+        param target_nbfuns = 100000
+      end
+    end
+  end
+
+  obj gmeshes
+    obj m1
+      param fen_file = bubl.fen
+      param gsubmeshes = sm1
+    end
+  end
+
+  obj gsubmeshes
+    obj sm1
+      param gcell_groups = gg1  gg2
+    end
+  end
+
+  obj gcell_groups
+    obj gg1
+      param type = solid_t4
+      param conn_file = bubl-gg1.conn
+    end
+    obj gg2
+      param type = surf_t3
+      param conn_file = bubl-gg2.conn
+    end
+  end
+
+  obj materials
+    obj steel
+      param type = viscel_iso
+      param E = 200000
+      param nu = 0.3 
+      param rho = 7.853e-9
+      param alpha = 0
+    end
+    obj fictitious
+      param type = viscel_iso
+      param E = 0
+      param nu = 0 
+    end
+  end
+
+  obj loads
+    obj trac1
+      param type = load_on_gcell_traction
+      param traction  = "-255*heaviside(1e-7-t))" "" ""
+    end 
+  end
+
+
+  

@@ -1,0 +1,95 @@
+  obj algorithms
+    obj steady_diffusion
+      obj ucsd ! instance
+        ! the algorithm should work with submeshes of this mesh
+        param gmesh = m1
+        ! and here are the submeshes on which it should operate
+        param gsubmeshes = sm1
+        !
+        obj gcell_groups
+          obj gg1
+            param implementation = default
+            param material = generic_heat_diffusion
+          end
+        end
+        !
+        param les = default_les
+        obj essential_bcs
+          param ebc_file = ucsd.ebc
+        end
+        obj adapt
+          param adaptive = true
+        end
+        param print_sol = false
+      end
+    end
+    obj hexvue
+      obj hexvue
+        obj gcell_groups
+          obj gg1
+            param implementation = default
+          end
+        end
+        param hexvue_file = ucsd.hvu
+      end
+    end
+    obj errest
+      obj ucsd
+        obj gcell_groups
+          obj gg1
+            param implementation = default
+          end
+        end
+      end
+    end
+    obj gradation
+      obj ucsd
+        param mesh_size_func = 0.5-0.2*ghw(0.6*((x-0.05)^2+(y-0.1)^2))-0.2*ghw(0.6*((x+0.1)^2+(y+0.05)^2))
+!        param mesh_size_func = 0.001+0.3*sqrt(sqrt(x^2+y^2))
+      end
+    end
+    obj refine
+      obj ucsd
+        param true_hierarchical = false
+        param errestim = energy
+        param ref_fraction = 0.2
+        param ignore_error_below = 0
+      end
+    end
+  end
+
+  obj gmeshes
+    obj m1
+      param fen_file = ucsd.fen
+      param gsubmeshes = sm1
+    end
+  end
+
+  obj gsubmeshes
+    obj sm1
+      param gcell_groups = gg1
+    end
+  end
+
+  obj gcell_groups
+    obj gg1
+      param type = surf_t3
+      param conn_file = ucsd-gg1.conn
+    end
+  end
+
+  obj materials
+    obj generic_heat_diffusion
+      param type = diffusion_iso
+      param conductivity = 1000
+      param internal_heat_generation_density = 100
+    end
+  end
+
+  obj les
+    obj default_les
+      param fles_solver = spetsc
+    end
+  end
+
+

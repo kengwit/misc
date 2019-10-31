@@ -1,0 +1,5 @@
+function "0.1*y*x*sin(3/(0.4+abs(cos(x))))" 
+line -3 -3 0 3 -3 0 dist 0.001
+line -3 3 0 3 3 0 dist 0.001
+line -3 -3 0 -3 3 0 dist 0.001
+line 3 -3 0 3 3 0 dist 0.001

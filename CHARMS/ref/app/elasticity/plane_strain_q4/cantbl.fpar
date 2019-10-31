@@ -1,0 +1,101 @@
+  obj algorithms
+    obj elasticity
+      obj cantbl ! instance
+        ! the algorithm should work with submeshes of this mesh
+        param gmesh = m1
+        ! and here are the submeshes on which it should operate
+        param gsubmeshes = sm1
+        !
+        obj gcell_groups
+          obj gg1
+            param implementation = default
+            param material = concrete
+            param body_load = gravity_load
+          end
+        end
+        !
+        param les = default_les
+        obj essential_bcs
+          param ebc_file = cantbl.ebc
+        end
+        obj adapt
+          param adaptive = true
+        end
+      end
+    end
+    obj hexvue
+      obj hexvue
+        obj gcell_groups
+          obj gg1
+            param implementation = default
+          end
+        end
+        param hexvue_file = cantbl.hvu
+      end
+    end
+    obj errest
+      obj cantbl
+        obj gcell_groups
+          obj gg1
+            param implementation = default
+          end
+        end
+      end
+    end
+    obj gradation
+      obj cantbl
+        param mesh_size_func = (1.01-y)*(1.01-x)*(x+1.01)*(y+1.01)
+      end
+    end
+    obj refine
+      obj cantbl
+        param h_over_hbar_unref = 1
+        param true_hierarchical = false
+        param errestim = gradation
+        param ref_fraction = 0.5
+      end
+    end
+  end
+
+  obj gmeshes
+    obj m1
+      param fen_file = cantbl.fen
+      param gsubmeshes = sm1
+    end
+  end
+
+  obj gsubmeshes
+    obj sm1
+      param gcell_groups = gg1
+    end
+  end
+
+  obj gcell_groups
+    obj gg1
+      param type = surf_q4
+      param conn_file = cantbl-gg1.conn
+    end
+  end
+
+  obj materials
+    obj concrete
+      param type = elasticity_iso
+      param E = 100
+      param nu  = 0.15
+    end
+  end
+
+  obj loads
+    obj gravity_load
+      param type = load_on_gcell_body
+      param force_density = "" "-1.99" ""
+    end
+  end
+
+  obj les
+    obj default_les
+      param fles_solver = spetsc
+    end
+  end
+
+

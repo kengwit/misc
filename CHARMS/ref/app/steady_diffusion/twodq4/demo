@@ -1,0 +1,4 @@
+a.out sqcrack -nadapt 6
+hexvue.sh sqcrack 5
+../show_hier sqcrack-hier5.egf
+

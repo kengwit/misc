@@ -1,0 +1,8 @@
+! symmetry planes
+function "" "0" ""
+box 0 0 0 8 0 2 inflate 0.01
+function "" "" "0"
+box 0 0 0 8 2 0 inflate 0.01
+! anvil
+function "0" "" ""
+box 8 0 0 8 2 2 inflate 0.01

@@ -1,0 +1,12 @@
+function "0" "" ""
+box 0 -1000 -1000 0 1000 1000 inflate 0.001
+
+function "0" "0" "0"
+box 10 -1000 -1000 10 1000 1000 inflate 0.001
+
+function "" "0" ""
+box -1000 0 -1000 1000 0 1000 inflate 0.001
+
+function "0" "0" "0"
+box -1000 10 -1000 1000 10 1000 inflate 0.001
+

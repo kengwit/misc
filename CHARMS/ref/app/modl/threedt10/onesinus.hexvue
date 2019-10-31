@@ -1,0 +1,38 @@
+! 
+NEWFRAME WIDTH 480 HEIGHT 480 X 100 Y 100
+edgeflag off
+edgecolor white
+shrink 1
+hvuchattribs
+hvuload onesinus-mode10.hvu
+!
+HVUPICKSET 3 ! z
+HVUSETDISP 0 1 2 sxsysz -0.106035 -0.106035 -0.106035 
+! 
+view axes off
+view bground white
+layer off  0
+layer on   1
+layer off 15
+layer off 16
+layer 0
+!
+hvucutn -1 -1 0
+hvucutc 162 117 0
+hvucutlr 1
+hvucrcut
+hvucutn -1 -1 0
+hvucutc 162.1 117.1 0
+hvucutlr 1
+hvucrcut
+hvucutn 0 0 1
+hvucutc 162 117 123
+hvucutlr 1
+hvucrcut
+view load cut.view
+!fringe 0 0.03
+RENDER SHADE
+render ldir -1 -2 3
+VIEW REDRAW
+image onesinus-mode10-0029.gif
+HVUQUIT

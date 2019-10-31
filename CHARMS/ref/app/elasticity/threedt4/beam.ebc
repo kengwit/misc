@@ -1,0 +1,4 @@
+function "0" "0" "0"
+box -100 -100 0 100 100 0 dist 1e-2 ! surf 1
+function "0" "0" "0.6*(x-y)"
+box -100 -100 8 100 100 8 dist 1e-1 ! surf 6

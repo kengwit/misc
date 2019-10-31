@@ -1,0 +1,8 @@
+function "0"
+LINE -1 -1 0 1 -1 0 inflate 0.0001
+LINE 1 -1 0 1 -0.01 0 inflate 0.0001
+LINE 1 -0.01 0 0 0 0 inflate 0.0001
+LINE 0 0 0 1 0.01 0 inflate 0.0001
+LINE 1 0.01 0 1 1 0 inflate 0.0001
+LINE 1 1 0 -1 1 0 inflate 0.0001
+LINE -1 1 0 -1 -1 0 inflate 0.0001

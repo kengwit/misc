@@ -1,0 +1,6 @@
+! HEXVUE cuts file (C) 1995 Petr Krysl
+! Field: phi (file cutout-adapt7.hvu). 
+!   There are 1 cuts here.
+!   normal x,y,z          center x,y,z          layer 
+1 0 0   0.42 0 0.033   1
+! END HEXVUE cut file.

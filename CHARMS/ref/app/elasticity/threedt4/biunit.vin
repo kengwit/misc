@@ -1,0 +1,36 @@
+mesh_size 1.64557
+gen_interior_pts
+lp_size_limit 100
+pt 1 1 1 -1
+pt 2 -1 1 -1
+pt 3 -1 1 0
+pt 4 1 1 0
+pt 5 -1 -1 -1
+pt 6 -1 -1 0
+pt 7 1 -1 -1
+pt 8 1 -1 0
+pt 9 1 1 1
+pt 10 -1 1 1
+pt 11 -1 -1 1
+pt 12 1 -1 1
+! boundary facets
+bsf 1 2 3  1 1 0
+bsf 3 4 1  1 1 0
+bsf 2 5 6  2 1 0
+bsf 6 3 2  2 1 0
+bsf 5 7 8  3 1 0
+bsf 8 6 5  3 1 0
+bsf 7 1 4  4 1 0
+bsf 4 8 7  4 1 0
+bsf 9 10 11  5 1 0
+bsf 11 12 9  5 1 0
+bsf 2 1 5  6 1 0
+bsf 7 5 1  6 1 0
+bsf 8 4 9  4 1 0
+bsf 9 12 8  4 1 0
+bsf 6 8 12  3 1 0
+bsf 12 11 6  3 1 0
+bsf 3 6 11  2 1 0
+bsf 11 10 3  2 1 0
+bsf 4 3 10  1 1 0
+bsf 10 9 4  1 1 0

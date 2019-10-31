@@ -1,0 +1,160 @@
+  obj algorithms
+    obj modl
+      obj cablebhalf ! instance
+        ! the algorithm should work with submeshes of this mesh
+        param gmesh = m1
+        ! and here are the submeshes on which it should operate
+        param gsubmeshes = sm1
+        !
+        obj gcell_groups
+          obj gg1
+            param implementation = default
+            param material = base
+          end
+	  obj gg2
+ 	    param implementation = default
+	    param material = dampmat
+          end
+	  obj gg3
+	    param implementation = default
+	    param material = conslyr
+          end
+        end
+        !
+        param evs = default_evs
+        obj essential_bcs
+          param ebc_file = cablebhalf.ebc
+        end
+        obj adapt
+          param adaptive = false
+        end
+      end
+    end
+    obj hexvue
+      obj hexvue
+        obj gcell_groups
+          obj gg1
+            param implementation = default
+          end
+          obj gg2
+            param implementation = default
+          end
+          obj gg3
+            param implementation = default
+          end
+        end
+        param hexvue_file = cablebhalf.hvu
+      end
+    end
+    obj gradation
+      obj cablebhalf
+        param mesh_size_func = 0.2
+      end
+    end
+    obj errest
+      obj cablebhalf
+        obj gcell_groups
+          obj gg1
+            param implementation = default
+            param material = base
+          end
+          obj gg2
+           param implementation = default
+            param material = dampmat
+          end
+          obj gg3
+            param implementation = default
+            param material = conslyr
+          end
+        end
+      end
+    end
+    obj refine
+      obj cablebhalf
+        param true_hierarchical = false
+        param errestim = energy 
+        param ref_fraction = 0.15
+      end
+    end
+  end
+
+  obj gmeshes
+    obj m1
+      param fen_file = cablebhalf.fen
+      param gsubmeshes = sm1
+    end
+  end
+
+  obj gsubmeshes
+    obj sm1
+      param gcell_groups = gg1 gg2 gg3
+    end
+  end
+
+  obj gcell_groups
+    obj gg1
+      param type = solid_h20
+      param conn_file = cablebhalf-gg1.conn
+    end
+    obj gg2
+      param type = solid_h20
+      param conn_file = cablebhalf-gg2.conn
+    end
+    obj gg3
+      param type = solid_h20
+      param conn_file = cablebhalf-gg3.conn
+    end
+  end
+
+  obj materials
+    obj base
+      param type = elasticity_iso
+      param lambda = 112.5e9
+      param mu = 750e8
+      param rho = 7.81e3
+      param sigma11 = 0
+      param sigma22 = 0
+      param sigma33 = 531e6
+      param sigma12 = 0
+      param sigma13 = 0
+      param sigma32 = 0
+    end
+    obj dampmat
+      param type = elasticity_iso
+      param lambda = 822.15e6
+      param mu = 167.79e5
+      param rho = 1.5e3
+      param sigma11 = 0
+      param sigma22 = 0
+      param sigma33 = 0
+      param sigma12 = 0
+      param sigma13 = 0
+      param sigma32 = 0
+    end
+  obj conslyr
+      param type = elasticity_iso
+      param lambda = 282.82e5
+      param mu = 577.18e3
+      param rho = 1.3e3
+      param sigma11 = 0
+      param sigma22 = 0
+      param sigma33 = 0
+      param sigma12 = 0
+      param sigma13 = 0
+      param sigma32 = 0
+    end
+  end
+
+  obj evs
+    obj default_evs
+      param nmodes = 5
+      param rtolv = 1e-9
+      param shift  = 0
+    end
+  end
+
+  obj initial_cond
+      param pressure = 0
+      param is_full_stress_tensor = true 
+  end
+

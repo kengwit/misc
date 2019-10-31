@@ -1,0 +1,11 @@
+! Homogeneous essential boundary condition on the surface
+function "0"
+! x
+box -5 -1000 -1000 -5 1000 1000 inflate 0.001
+box +5 -1000 -1000 +5 1000 1000 inflate 0.001
+! y
+box -1000 -5 -1000 1000 -5 1000 inflate 0.001
+box -1000 +5 -1000 1000 +5 1000 inflate 0.001
+! z
+box -1000 -1000 -5 1000 1000 -5 inflate 0.001
+box -1000 -1000 +5 1000 1000 +5 inflate 0.001

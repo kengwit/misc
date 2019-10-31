@@ -1,0 +1,6 @@
+function "0" "" "" 
+box   -1 -100 -100   -1  100  100  inflate 0.001
+function "" "0" "" 
+box -100 -0.2 -100  100 -0.2  100  inflate 0.001
+function "" "" "0" 
+box -100 -100 -0.6  100  100 -0.6 inflate 0.001

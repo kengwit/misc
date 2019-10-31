@@ -1,0 +1,27 @@
+NEWFRAME WIDTH 640 HEIGHT 480 X 0 Y 100
+edgeflag on
+edgecolor white
+shrink 1
+hvuchattribs
+view load box.view
+load box.outline.egf
+render wire
+view axes off
+view bground white
+view iso
+layer 0
+layer on   0
+layer on   1
+layer off 15
+layer on  16
+! label "von Mises stress"
+HVUPICKSET 6
+HVUSETDISP 0 1 2 sxsysz 1 1 1
+fringe 0 1000
+! fringe smooth
+fringe show_scale on
+render shade
+hvupause 3
+image junk.png
+hvuquit
+ 

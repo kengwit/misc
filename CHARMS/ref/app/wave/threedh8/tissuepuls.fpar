@@ -1,0 +1,163 @@
+  obj algorithms
+    obj wave
+      obj tissuepuls ! sinusoidal axial wave
+        param gmesh = m1
+        param gsubmeshes = sm1
+        obj initial_conditions
+          param u0 = "" "" ""
+          param v0 = "" "" ""
+        end
+        obj time_step
+          param nadapt = 300
+          param dt = 0
+          param tstart = 0
+          param tend   = 0.05
+          param red_fact = .7
+          param back_track_frac = 1
+        end
+        obj watchpoints
+          param list = "w1" "w2" 
+          param time_between_outputs = 0 
+          param time_between_graphics = 10000 ! .075 ! disabled xhexvue graphics
+          param buffer_size = 20
+          param force_back_track_output = true
+          obj w1
+           param coord = 3.495 400 5.00715
+           param var = "ux" "uy" "uz" "vx" "vy" "vz" "von_mises" "sigma_xx" "sigma_yy" "sigma_zz" "sigma_xy" "sigma_xz" 
+          end
+          obj w2
+           param coord = 3.495 150 5.00715
+           param var = "ux" "uy" "uz" "vx" "vy" "vz" "von_mises" "sigma_xx" "sigma_yy" "sigma_zz" "sigma_xy" "sigma_xz"
+          end
+        end
+        obj gcell_groups
+          obj gg1
+            param implementation = opt
+            param material = jello
+          end
+          obj gg2
+            param implementation = wave_traction_q4
+            param material = fictitious
+            param traction_load = trac1
+          end
+        end
+        obj essential_bcs
+          param ebc_file = puls.ebc
+        end
+        obj adapt
+          param adaptive = false
+        end
+        obj motion_pict
+          param show = true
+          param scale = 10
+        end
+      end
+    end
+    obj hexvue
+      obj hexvue
+        obj gcell_groups
+          obj gg1
+            param implementation = default
+          end
+          obj gg2
+            param implementation = default
+          end
+        end
+        param hexvue_file = tissuepuls.hvu
+      end
+    end
+    obj xhexvue
+      obj tissuepuls
+        obj gcell_groups
+          obj gg1
+            param implementation = default
+          end
+          obj gg2
+            param implementation = default
+          end
+        end
+        param xhexvue_file = tissuepuls.xhvu
+        param quants       = "ux" "uy" "uz" "vx" "vy" "vz" "von_mises" "sigma_xx" "sigma_yy" "sigma_zz" "sigma_xy" "sigma_xz"
+      end
+    end
+    obj gradation
+      obj tissuepuls
+        param mesh_size_func = 0.01+0.2*((y-1)^2+z^2)
+        param mesh_size_func = 0.2
+      end
+    end
+    obj errest
+      obj tissuepuls
+        obj gcell_groups
+          obj gg1
+            param implementation = default
+            param material = jello
+          end
+          obj gg2
+            param implementation = default
+            param material = fictitious
+          end
+        end
+      end
+    end
+    obj refine
+      obj tissuepuls
+        param true_hierarchical = false
+        param errestim = energy 
+        param ref_fraction = 1
+        param h_over_hbar_ref = 1
+        param h_over_hbar_unref = 1
+        param max_ref_level = 2
+        param target_nbfuns = 2000
+      end
+    end
+  end
+
+  obj gmeshes
+    obj m1
+      param fen_file = puls.fen
+      param gsubmeshes = sm1
+    end
+  end
+
+  obj gsubmeshes
+    obj sm1
+      param gcell_groups = gg1 gg2
+    end
+  end
+
+  obj gcell_groups
+    obj gg1
+      param type = solid_h8
+      param conn_file = puls-gg1.conn
+    end
+    obj gg2
+      param type = surf_q4
+      param conn_file = puls-gg2.conn
+    end
+  end
+
+  obj materials
+    obj jello
+      param type = viscel_iso
+      param E = 1.0
+      param nu = 0.4 
+      param rho = 1e-9
+      param alpha = 0
+      param viscosity =  2e-6
+    end
+    obj fictitious
+      param type = viscel_iso
+      param E = 0
+      param nu = 0 
+    end
+  end
+
+  obj loads
+    obj trac1
+      param type = load_on_gcell_traction
+      param traction  = "" "0.2*sin(2000*2*pi*t)*heaviside(1/2000-t)"      ""
+    end 
+  end
+
+  

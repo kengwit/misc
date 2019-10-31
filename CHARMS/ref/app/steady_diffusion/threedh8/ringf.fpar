@@ -1,0 +1,90 @@
+! 
+  obj algorithms
+    obj steady_diffusion
+      obj ringf ! instance
+        param gmesh = m1
+        param gsubmeshes = sm1
+        obj gcell_groups
+          obj gg1
+            param implementation = default
+            param material = generic_heat_diffusion
+          end
+        end
+        param les = default_les
+        obj essential_bcs
+          param ebc_file = ringf.ebc
+        end
+        obj adapt
+          param adaptive = true
+        end
+      end
+    end
+    obj hexvue
+      obj hexvue
+        obj gcell_groups
+          obj gg1
+            param implementation = default
+          end
+        end
+        param hexvue_file = ringf.hvu
+      end
+    end
+    obj gradation
+      obj ringf
+        param mesh_size_func = 1.5 + 1*(z+8+0.02*y^2)^2 
+      end
+    end
+    obj errest
+      obj ringf
+        obj gcell_groups
+          obj gg1
+            param implementation = default
+          end
+        end
+      end
+    end
+    obj refine
+      obj ringf
+        param true_hierarchical = false
+        param errestim = gradation ! energy 
+        param ref_fraction = 0.13
+      end
+    end
+  end
+
+  obj gmeshes
+    obj m1
+      param fen_file = ringf.fen
+      param gsubmeshes = sm1
+    end
+  end
+
+  obj gsubmeshes
+    obj sm1
+      param gcell_groups = gg1
+    end
+  end
+
+  obj gcell_groups
+    obj gg1
+      param type = solid_h8
+      param conn_file = ringf-gg1.conn
+    end
+  end
+
+  obj materials
+    obj generic_heat_diffusion
+      param type = diffusion_iso
+      param conductivity = 1000
+      param internal_heat_generation_density = -100
+    end
+  end
+
+  obj les
+    obj default_les
+      param fles_solver = spetsc ! smeschach ! 
+      param use_nnzs = true
+    end
+  end
+
+

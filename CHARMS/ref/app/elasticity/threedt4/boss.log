@@ -1,0 +1,5 @@
+a.out boss -nadapt 8 -mat_view_draw -log_info -pc_type bjacobi -ksp_type gmres
+a.out boss -nadapt 8 -pc_type bjacobi -ksp_type gmres -log_info
+
+
+a.out boss -nadapt 8 -pc_type bjacobi -ksp_type gmres -log_info -ksp_monitor

@@ -1,0 +1,16 @@
+!
+! Samples to test circular arcs
+!
+curve 1 line 1 0 2 0
+curve 2 arc 2 0 0 2 center 0 0
+curve 3 line 0 2 0 1
+curve 4 line 0 1 1 1
+curve 5 line 1 1 1 0
+
+subregion 1  property 1 boundary 1 2 3 4 5
+
+m-ctl-point constant 0.6
+
+print @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+print REMARK: Should generate  708 triangles, 389 vertices, 1096 edges
+print @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@

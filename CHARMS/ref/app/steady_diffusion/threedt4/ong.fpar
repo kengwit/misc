@@ -1,0 +1,85 @@
+! This is a sample input file for famuls.
+
+  obj algorithms
+    obj steady_diffusion
+      obj ong ! instance
+        ! the algorithm should work with submeshes of this mesh
+        param gmesh = m1
+        ! and here are the submeshes on which it should operate
+        param gsubmeshes = sm1
+        !
+        obj gcell_groups
+          obj gg1
+            param implementation = default
+            param material = generic_heat_diffusion
+          end
+        end
+        !
+        param les = default_les
+        obj essential_bcs
+          param ebc_file = ong.ebc
+        end
+        obj adapt
+          param adaptive = true
+        end
+      end
+    end
+    obj hexvue
+      obj hexvue
+        obj gcell_groups
+          obj gg1
+            param implementation = default
+          end
+        end
+        param hexvue_file = ong.hvu
+      end
+    end
+    obj gradation
+      obj ong
+!        param mesh_size_func = 
+        param mesh_size_func = 8 - 0.4*z
+      end
+    end
+    obj refine
+      obj ong
+        param true_hierarchical = true
+        param ref_fraction = 1.0
+      end
+    end
+  end
+
+  obj gmeshes
+    obj m1
+      param fen_file = ong.fen
+      param gsubmeshes = sm1
+    end
+  end
+
+  obj gsubmeshes
+    obj sm1
+      param gcell_groups = gg1
+    end
+  end
+
+  obj gcell_groups
+    obj gg1
+      param type = solid_t4
+      param conn_file = ong-gg1.conn
+    end
+  end
+
+  obj materials
+    obj generic_heat_diffusion
+      param type = diffusion_iso
+      param conductivity = 100
+      param internal_heat_generation_density = 10000
+    end
+  end
+
+  obj les
+    obj default_les
+      param fles_solver = spetsc ! smeschach ! 
+    end
+  end
+
+

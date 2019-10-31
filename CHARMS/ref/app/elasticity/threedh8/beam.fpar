@@ -1,0 +1,106 @@
+  obj algorithms
+    obj elasticity
+      obj beam ! instance
+        ! the algorithm should work with submeshes of this mesh
+        param gmesh = m1
+        ! and here are the submeshes on which it should operate
+        param gsubmeshes = sm1
+        !
+        obj gcell_groups
+          obj gg1
+            param implementation = default
+            param material = jello
+            param body_load = gravity_load
+          end
+        end
+        !
+        param les = default_les
+        obj essential_bcs
+          param ebc_file = beam.ebc
+        end
+        obj adapt
+          param adaptive = true
+        end
+      end
+    end
+    obj hexvue
+      obj hexvue
+        obj gcell_groups
+          obj gg1
+            param implementation = default
+          end
+        end
+        param hexvue_file = beam.hvu
+      end
+    end
+    obj gradation
+      obj beam
+!        param mesh_size_func = 0.01+0.2*((y-1)^2+z^2)
+        param mesh_size_func = 0.02
+      end
+    end
+    obj errest
+      obj beam
+        obj gcell_groups
+          obj gg1
+            param implementation = default
+            param material = jello
+          end
+        end
+      end
+    end
+    obj refine
+      obj beam
+        param true_hierarchical = false
+        param errestim = energy 
+        param ref_fraction = 1
+        param h_over_hbar_ref = 1
+        param h_over_hbar_unref = 2
+        param max_ref_level = 6
+        param target_nbfuns = 5000
+      end
+    end
+  end
+
+  obj gmeshes
+    obj m1
+      param fen_file = beam.fen
+      param gsubmeshes = sm1
+    end
+  end
+
+  obj gsubmeshes
+    obj sm1
+      param gcell_groups = gg1
+    end
+  end
+
+  obj gcell_groups
+    obj gg1
+      param type = solid_h8
+      param conn_file = beam-gg1.conn
+    end
+  end
+
+  obj materials
+    obj jello
+      param type = elasticity_iso
+!      param E = 210
+!      param nu = 0.3
+      param lambda = 121.154 ! E * nu / (1 + nu) / (1 - 2*nu)
+      param mu = 80.7692 ! E/(2*(1+nu))
+    end
+  end
+
+  obj loads
+    obj gravity_load
+      param type = load_on_gcell_body
+      param force_density = "" "" "-10"
+    end
+  end
+
+  obj les
+    obj default_les
+      param fles_solver = spetsc ! gep ! smeschach ! 
+    end
+  end

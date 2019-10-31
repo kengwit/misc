@@ -1,0 +1,31 @@
+! 
+edgeflag on
+edgecolor black
+shrink 1
+hvuchattribs
+!
+HVUPICKSET 7
+HVUSETDISP 0 1 2 sxsysz 1 1 1
+! 
+NEWFRAME WIDTH 640 HEIGHT 480 X 100 Y 100
+view load bubl1.view
+render wire
+layer on   0
+layer on   1
+layer off 15
+layer on  16
+layer 0
+!
+! fit
+view axes off
+view bground white
+RENDER shade dither
+render ldir +1 2 5
+! fringe 0 140 ! for 6
+fringe -400 400 ! for 9
+fringe smooth
+VIEW REDRAW
+hvupause 2
+image junk.gif
+hvupause 2
+HVUQUIT

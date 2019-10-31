@@ -1,0 +1,4 @@
+function "4*cos(2*x)-5*sin(3*y)" 
+box -100 -100 1 100 100 1 inflate 0.001 ! upper surface
+function "-4*cos(3*x)+5*sin(4*y)" 
+box -100 -100 0 100 100 0 inflate 0.001 ! lower surface

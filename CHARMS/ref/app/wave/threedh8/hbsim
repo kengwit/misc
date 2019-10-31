@@ -1,0 +1,8 @@
+a.out hb -nadapt 0
+a.out hb2n -nadapt 0
+a.out hb4n -nadapt 0
+#a.out hb8n -nadapt 0
+a.out hba -nadapt 10
+a.out hb2a -nadapt 10
+#hexrefine -wfile hb-1-iv.in -nint 8 > hb-8-iv.in
+#wd -v -! -R 0.5 -T 5e-6 -O 0 -i hb-4-iv -x 1

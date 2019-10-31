@@ -1,0 +1,131 @@
+  obj algorithms
+    obj wave
+      obj L2
+        ! the algorithm should work with submeshes of this mesh
+        param gmesh = m1
+        ! and here are the submeshes on which it should operate
+        param gsubmeshes = sm1
+        !
+        obj initial_conditions
+          param u0 = 0 0 0
+          param v0 = 100 0 0
+        end
+        obj time_step
+          param dt = 0
+          param tstart = 0
+          param tend   = 0.25
+          param red_fact = .95
+        end
+        obj watchpoints
+          param list = "w1" 
+          param time_between_outputs = 0 
+          param time_between_graphics = .0002
+          param buffer_size = 20
+          obj w1
+           param gcell_id = 8
+           param param_loc = 0 0 0
+           param var = "ux" "uy" "uz" "vx" "vy" "vz"     
+          end
+        end
+        obj gcell_groups
+          obj gg1
+            param implementation = default
+            param material = jello
+          end
+        end
+        !
+        ! param les = default_les !RAW
+        obj essential_bcs
+          param ebc_file = L2.ebc
+        end
+        obj adapt
+          param adaptive = true
+        end
+      end
+    end
+    obj hexvue
+      obj hexvue
+        obj gcell_groups
+          obj gg1
+            param implementation = default
+          end
+        end
+        param hexvue_file = L2.hvu
+      end
+    end
+    obj xhexvue
+      obj L2
+        obj gcell_groups
+          obj gg1
+            param implementation = default
+          end
+        end
+        param xhexvue_file = L2.xvu
+        param quants       = "ux" "uy" "uz" "vx" "vy" "vz" "von_mises" 
+      end
+    end
+    obj errest
+      obj L2
+        obj gcell_groups
+          obj gg1
+            param implementation = default
+            param material = jello
+          end
+        end
+      end
+    end
+    obj refine
+      obj L2
+        param true_hierarchical = false
+        param errestim = energy 
+        param ref_fraction = 1
+        param h_over_hbar_ref = 1
+        param h_over_hbar_unref = 0.75
+        param max_ref_level = 3
+        param target_nbfuns = 1200
+      end
+    end
+  end
+
+  obj gmeshes
+    obj m1
+      param fen_file = L2.fen
+      param gsubmeshes = sm1
+    end
+  end
+
+  obj gsubmeshes
+    obj sm1
+      param gcell_groups = gg1
+    end
+  end
+
+  obj gcell_groups
+    obj gg1
+      param type = solid_h8
+      param conn_file = L2-gg1.conn
+    end
+  end
+
+  obj materials
+    obj jello
+      param type = elasticity_iso
+      param E = 16000
+      param nu = 0.3 
+      param rho = 0.0078
+    end
+    obj fictitious
+      param type = elasticity_iso
+      param E = 0
+      param nu = 0 
+    end
+  end
+
+  obj loads
+    obj surcharge
+      param type = load_on_gcell_traction
+      param traction  = "" ""   ""      
+    end 
+  end
+
+  

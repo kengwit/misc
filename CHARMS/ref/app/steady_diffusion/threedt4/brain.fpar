@@ -1,0 +1,84 @@
+! This is a sample input file for famuls.
+
+  obj algorithms
+    obj steady_diffusion
+      obj brain ! instance
+        ! the algorithm should work with submeshes of this mesh
+        param gmesh = m1
+        ! and here are the submeshes on which it should operate
+        param gsubmeshes = sm1
+        !
+        obj gcell_groups
+          obj gg1
+            param implementation = default
+            param material = generic_heat_diffusion
+          end
+        end
+        !
+        param les = default_les
+        obj essential_bcs
+          param ebc_file = brain.ebc
+        end
+        obj adapt
+          param adaptive = true
+        end
+      end
+    end
+    obj hexvue
+      obj hexvue
+        obj gcell_groups
+          obj gg1
+            param implementation = default
+          end
+        end
+        param hexvue_file = brain.hvu
+      end
+    end
+    obj gradation
+      obj brain
+        param mesh_size_func = 0.02 + 0.2*(((((x-.7)*3)^2)+(((y-1)*3)^2)+(((z-22.3)*3)^2)))
+      end
+    end
+    obj refine
+      obj brain
+        param true_hierarchical = false
+        param ref_fraction = 0.02
+      end
+    end
+  end
+
+  obj gmeshes
+    obj m1
+      param fen_file = brain.fen
+      param gsubmeshes = sm1
+    end
+  end
+
+  obj gsubmeshes
+    obj sm1
+      param gcell_groups = gg1
+    end
+  end
+
+  obj gcell_groups
+    obj gg1
+      param type = solid_t4
+      param conn_file = brain-gg1.conn
+    end
+  end
+
+  obj materials
+    obj generic_heat_diffusion
+      param type = diffusion_iso
+      param conductivity = 10
+      param internal_heat_generation_density = 10000/(exp(((((x-1.7)*0.3)^2)+(((y-1)*0.3)^2)+(((z-23)*0.3)^2))+0.0001)^2)
+    end
+  end
+
+  obj les
+    obj default_les
+      param fles_solver = spetsc ! smeschach ! 
+    end
+  end
+
+

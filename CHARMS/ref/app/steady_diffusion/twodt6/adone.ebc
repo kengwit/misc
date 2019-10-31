@@ -1,0 +1,6 @@
+function "0"
+box   0  0  0    0  0  0 dist 0.001
+box   1  0  0        1  0  0     dist 0.001
+box 0  1  0     0  1  0     dist 0.001
+
+

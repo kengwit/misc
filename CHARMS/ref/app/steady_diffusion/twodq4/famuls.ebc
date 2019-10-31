@@ -1,0 +1,7 @@
+function "0"
+LINE -3 -3 0 11 -3  0 inflate 0.1
+LINE 11 -3 0 11 3 0 inflate 0.1
+LINE 11 3 0 -3 3 0 inflate 0.1
+LINE -3 3 0 -3 -3 0 inflate 0.1
+line -0.020806 0.749010 0 -0.257692 0.080769 0 inflate 0.001
+line 8.417480 -0.458483 0 7.169530 -0.411918 0 inflate 0.001

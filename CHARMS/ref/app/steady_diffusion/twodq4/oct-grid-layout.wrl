@@ -1,0 +1,1732 @@
+#VRML V1.0 ascii
+# 
+# Elixir (C) 1994-98 Petr Krysl
+ShapeHints {
+   vertexOrdering  CLOCKWISE
+   shapeType       UNKNOWN_SHAPE_TYPE
+   faceType        CONVEX
+   creaseAngle     0.5
+}
+Separator {
+ # start-of-data
+Separator {
+  Info { string "Axes" }
+  # rotate Z-axis up, X-axis out of screen
+  Translation { translation 0 0 0.8 }
+  DEF ScaleToPixels Separator {Scale { scaleFactor 0.56 0.56 0.56 }}
+  # sphere at the center
+  Separator {
+    Material {
+      diffuseColor 1 1 1
+      emissiveColor 0.2 0.2 0.2
+      specularColor  0.5 0.1 0.1
+      transparency 0
+    }
+    Sphere { radius 0.04 }
+  }
+  # y-axis
+  Separator {
+    Material {
+      diffuseColor 0 1 0
+      emissiveColor 0 0.1 0 
+      specularColor  0.1 0.5 0.1
+      transparency 0.5
+    }
+    DEF AxisArrow Separator {
+      Translation { translation 0 0.5 0 }
+      Cylinder { radius 0.02 height  1 }
+      Translation { translation 0 0.5 0 }
+      Cone { bottomRadius 0.04 height 0.2 }
+      Translation { translation 0 -0.5 0 }
+      Translation { translation 0 -0.5 0 }
+    }
+  }
+  # x-axis
+  Separator {
+    Material {
+      diffuseColor 1 0 0
+      emissiveColor 0.1 0 0
+      specularColor  0.5 0.1 0.1
+      transparency 0.5
+    }
+    Transform { translation 0 0 0
+                rotation 0 0 -1  1.57079632679489661923 }
+    USE AxisArrow
+    Transform { translation 0 0 0
+                rotation 0 0 -1 -1.57079632679489661923 }
+  }
+ # z-axis
+  Separator {
+    Material {
+      diffuseColor 0 0 1
+      emissiveColor 0 0 0.1 
+      specularColor  0.1 0.1 0.5
+      transparency 0.5
+    }
+    Transform { translation 0 0 0
+                rotation 1 0 0 1.57079632679489661923 }
+    USE AxisArrow 
+    Transform { translation 0 0 0
+                rotation 1 0 0 -1.57079632679489661923 }
+  }
+  Scale { scaleFactor 1.78571 1.78571 1.78571 }
+  Translation { translation -0 -0 -0.8 }
+}
+DEF red Material {
+   ambientColor 1 0 0
+   diffuseColor 1 0 0
+   specularColor  0.5 0.5 0.5
+   transparency 0
+}
+DEF green Material {
+   ambientColor 0 1 0
+   diffuseColor 0 1 0
+   specularColor  0.5 0.5 0.5
+   transparency 0
+}
+DEF yellow Material {
+   ambientColor 1 1 0
+   diffuseColor 1 1 0
+   specularColor  0.5 0.5 0.5
+   transparency 0
+}
+DEF cyan Material {
+   ambientColor 0 1 1
+   diffuseColor 0 1 1
+   specularColor  0.5 0.5 0.5
+   transparency 0
+}
+USE red
+Coordinate3 { point [
+0.0023 0.0023 0,
+0.4973 0.0023 0,
+0.4181 0.4181 0,
+0.0023 0.4973 0,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE red
+Coordinate3 { point [
+0.501568 0.00281776 0,
+0.996568 0.00281776 0,
+0.706604 0.702854 0,
+0.422368 0.418618 0,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE red
+Coordinate3 { point [
+0.00281776 0.501568 0,
+0.418618 0.422368 0,
+0.702854 0.706604 0,
+0.00281776 0.996568 0,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE red
+Coordinate3 { point [
+-0.0023 0.0023 0,
+-0.0023 0.4973 0,
+-0.4181 0.4181 0,
+-0.4973 0.0023 0,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE red
+Coordinate3 { point [
+-0.00281776 0.501568 0,
+-0.00281776 0.996568 0,
+-0.702854 0.706604 0,
+-0.418618 0.422368 0,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE red
+Coordinate3 { point [
+-0.501568 0.00281776 0,
+-0.422368 0.418618 0,
+-0.706604 0.702854 0,
+-0.996568 0.00281776 0,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE red
+Coordinate3 { point [
+-0.0023 -0.0023 0,
+-0.4973 -0.0023 0,
+-0.4181 -0.4181 0,
+-0.0023 -0.4973 0,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE red
+Coordinate3 { point [
+-0.501568 -0.00281776 0,
+-0.996568 -0.00281776 0,
+-0.706604 -0.702854 0,
+-0.422368 -0.418618 0,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE red
+Coordinate3 { point [
+-0.00281776 -0.501568 0,
+-0.418618 -0.422368 0,
+-0.702854 -0.706604 0,
+-0.00281776 -0.996568 0,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE red
+Coordinate3 { point [
+0.0023 -0.0023 0,
+0.0023 -0.4973 0,
+0.4181 -0.4181 0,
+0.4973 -0.0023 0,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE red
+Coordinate3 { point [
+0.00281776 -0.501568 0,
+0.00281776 -0.996568 0,
+0.702854 -0.706604 0,
+0.418618 -0.422368 0,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE red
+Coordinate3 { point [
+0.501568 -0.00281776 0,
+0.422368 -0.418618 0,
+0.706604 -0.702854 0,
+0.996568 -0.00281776 0,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+Separator{USE red
+Translation{translation 0.000000 0.500000 0.000000}
+USE ScaleToPixels
+Sphere{radius 0.02}}
+Separator{USE red
+Translation{translation 0.420000 0.420000 0.000000}
+USE ScaleToPixels
+Sphere{radius 0.02}}
+Separator{USE red
+Translation{translation 0.500000 0.000000 0.000000}
+USE ScaleToPixels
+Sphere{radius 0.02}}
+Separator{USE red
+Translation{translation 0.000000 0.000000 0.000000}
+USE ScaleToPixels
+Sphere{radius 0.02}}
+Separator{USE red
+Translation{translation 0.707107 0.707107 0.000000}
+USE ScaleToPixels
+Sphere{radius 0.02}}
+Separator{USE red
+Translation{translation 1.000000 0.000000 0.000000}
+USE ScaleToPixels
+Sphere{radius 0.02}}
+Separator{USE red
+Translation{translation 0.000000 1.000000 0.000000}
+USE ScaleToPixels
+Sphere{radius 0.02}}
+Separator{USE red
+Translation{translation -0.500000 -0.000000 0.000000}
+USE ScaleToPixels
+Sphere{radius 0.02}}
+Separator{USE red
+Translation{translation -0.420000 0.420000 0.000000}
+USE ScaleToPixels
+Sphere{radius 0.02}}
+Separator{USE red
+Translation{translation -0.707107 0.707107 0.000000}
+USE ScaleToPixels
+Sphere{radius 0.02}}
+Separator{USE red
+Translation{translation -1.000000 -0.000000 0.000000}
+USE ScaleToPixels
+Sphere{radius 0.02}}
+Separator{USE red
+Translation{translation 0.000000 -0.500000 0.000000}
+USE ScaleToPixels
+Sphere{radius 0.02}}
+Separator{USE red
+Translation{translation -0.420000 -0.420000 0.000000}
+USE ScaleToPixels
+Sphere{radius 0.02}}
+Separator{USE red
+Translation{translation -0.707107 -0.707107 0.000000}
+USE ScaleToPixels
+Sphere{radius 0.02}}
+Separator{USE red
+Translation{translation 0.000000 -1.000000 0.000000}
+USE ScaleToPixels
+Sphere{radius 0.02}}
+Separator{USE red
+Translation{translation 0.420000 -0.420000 0.000000}
+USE ScaleToPixels
+Sphere{radius 0.02}}
+Separator{USE red
+Translation{translation 0.707107 -0.707107 0.000000}
+USE ScaleToPixels
+Sphere{radius 0.02}}
+USE green
+Coordinate3 { point [
+0.0011 0.2511 0.6,
+0.2288 0.2313 0.6,
+0.209 0.459 0.6,
+0.0011 0.4986 0.6,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE green
+Coordinate3 { point [
+0.231 0.231 0.6,
+0.4587 0.2112 0.6,
+0.4191 0.4191 0.6,
+0.2112 0.4587 0.6,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE green
+Coordinate3 { point [
+0.2511 0.0011 0.6,
+0.4986 0.0011 0.6,
+0.459 0.209 0.6,
+0.2313 0.2288 0.6,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE green
+Coordinate3 { point [
+0.0012 0.0012 0.6,
+0.2487 0.0012 0.6,
+0.2289 0.2289 0.6,
+0.0012 0.2487 0.6,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE green
+Coordinate3 { point [
+0.460651 0.211588 0.6,
+0.65546 0.282648 0.6,
+0.563169 0.561607 0.6,
+0.421051 0.419488 0.6,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE green
+Coordinate3 { point [
+0.657162 0.283724 0.6,
+0.851971 0.354783 0.6,
+0.706988 0.704801 0.6,
+0.564871 0.562683 0.6,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE green
+Coordinate3 { point [
+0.750651 0.00158833 0.6,
+0.998151 0.00158833 0.6,
+0.853169 0.351607 0.6,
+0.65836 0.280548 0.6,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE green
+Coordinate3 { point [
+0.500917 0.00122944 0.6,
+0.748417 0.00122944 0.6,
+0.656126 0.280189 0.6,
+0.461317 0.209129 0.6,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE green
+Coordinate3 { point [
+0.00158833 0.750651 0.6,
+0.280548 0.65836 0.6,
+0.351607 0.853169 0.6,
+0.00158833 0.998151 0.6,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE green
+Coordinate3 { point [
+0.283724 0.657162 0.6,
+0.562683 0.564871 0.6,
+0.704801 0.706988 0.6,
+0.354783 0.851971 0.6,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE green
+Coordinate3 { point [
+0.211588 0.460651 0.6,
+0.419488 0.421051 0.6,
+0.561607 0.563169 0.6,
+0.282648 0.65546 0.6,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE green
+Coordinate3 { point [
+0.00122944 0.500917 0.6,
+0.209129 0.461317 0.6,
+0.280189 0.656126 0.6,
+0.00122944 0.748417 0.6,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE green
+Coordinate3 { point [
+-0.2511 0.0011 0.6,
+-0.2313 0.2288 0.6,
+-0.459 0.209 0.6,
+-0.4986 0.0011 0.6,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE green
+Coordinate3 { point [
+-0.231 0.231 0.6,
+-0.2112 0.4587 0.6,
+-0.4191 0.4191 0.6,
+-0.4587 0.2112 0.6,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE green
+Coordinate3 { point [
+-0.0011 0.2511 0.6,
+-0.0011 0.4986 0.6,
+-0.209 0.459 0.6,
+-0.2288 0.2313 0.6,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE green
+Coordinate3 { point [
+-0.0012 0.0012 0.6,
+-0.0012 0.2487 0.6,
+-0.2289 0.2289 0.6,
+-0.2487 0.0012 0.6,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE green
+Coordinate3 { point [
+-0.211588 0.460651 0.6,
+-0.282648 0.65546 0.6,
+-0.561607 0.563169 0.6,
+-0.419488 0.421051 0.6,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE green
+Coordinate3 { point [
+-0.283724 0.657162 0.6,
+-0.354783 0.851971 0.6,
+-0.704801 0.706988 0.6,
+-0.562683 0.564871 0.6,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE green
+Coordinate3 { point [
+-0.00158833 0.750651 0.6,
+-0.00158833 0.998151 0.6,
+-0.351607 0.853169 0.6,
+-0.280548 0.65836 0.6,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE green
+Coordinate3 { point [
+-0.00122944 0.500917 0.6,
+-0.00122944 0.748417 0.6,
+-0.280189 0.656126 0.6,
+-0.209129 0.461317 0.6,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE green
+Coordinate3 { point [
+-0.750651 0.00158833 0.6,
+-0.65836 0.280548 0.6,
+-0.853169 0.351607 0.6,
+-0.998151 0.00158833 0.6,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE green
+Coordinate3 { point [
+-0.657162 0.283724 0.6,
+-0.564871 0.562683 0.6,
+-0.706988 0.704801 0.6,
+-0.851971 0.354783 0.6,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE green
+Coordinate3 { point [
+-0.460651 0.211588 0.6,
+-0.421051 0.419488 0.6,
+-0.563169 0.561607 0.6,
+-0.65546 0.282648 0.6,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE green
+Coordinate3 { point [
+-0.500917 0.00122944 0.6,
+-0.461317 0.209129 0.6,
+-0.656126 0.280189 0.6,
+-0.748417 0.00122944 0.6,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE green
+Coordinate3 { point [
+-0.0011 -0.2511 0.6,
+-0.2288 -0.2313 0.6,
+-0.209 -0.459 0.6,
+-0.0011 -0.4986 0.6,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE green
+Coordinate3 { point [
+-0.231 -0.231 0.6,
+-0.4587 -0.2112 0.6,
+-0.4191 -0.4191 0.6,
+-0.2112 -0.4587 0.6,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE green
+Coordinate3 { point [
+-0.2511 -0.0011 0.6,
+-0.4986 -0.0011 0.6,
+-0.459 -0.209 0.6,
+-0.2313 -0.2288 0.6,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE green
+Coordinate3 { point [
+-0.0012 -0.0012 0.6,
+-0.2487 -0.0012 0.6,
+-0.2289 -0.2289 0.6,
+-0.0012 -0.2487 0.6,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE green
+Coordinate3 { point [
+-0.460651 -0.211588 0.6,
+-0.65546 -0.282648 0.6,
+-0.563169 -0.561607 0.6,
+-0.421051 -0.419488 0.6,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE green
+Coordinate3 { point [
+-0.657162 -0.283724 0.6,
+-0.851971 -0.354783 0.6,
+-0.706988 -0.704801 0.6,
+-0.564871 -0.562683 0.6,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE green
+Coordinate3 { point [
+-0.750651 -0.00158833 0.6,
+-0.998151 -0.00158833 0.6,
+-0.853169 -0.351607 0.6,
+-0.65836 -0.280548 0.6,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE green
+Coordinate3 { point [
+-0.500917 -0.00122944 0.6,
+-0.748417 -0.00122944 0.6,
+-0.656126 -0.280189 0.6,
+-0.461317 -0.209129 0.6,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE green
+Coordinate3 { point [
+-0.00158833 -0.750651 0.6,
+-0.280548 -0.65836 0.6,
+-0.351607 -0.853169 0.6,
+-0.00158833 -0.998151 0.6,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE green
+Coordinate3 { point [
+-0.283724 -0.657162 0.6,
+-0.562683 -0.564871 0.6,
+-0.704801 -0.706988 0.6,
+-0.354783 -0.851971 0.6,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE green
+Coordinate3 { point [
+-0.211588 -0.460651 0.6,
+-0.419488 -0.421051 0.6,
+-0.561607 -0.563169 0.6,
+-0.282648 -0.65546 0.6,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE green
+Coordinate3 { point [
+-0.00122944 -0.500917 0.6,
+-0.209129 -0.461317 0.6,
+-0.280189 -0.656126 0.6,
+-0.00122944 -0.748417 0.6,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE green
+Coordinate3 { point [
+0.2511 -0.0011 0.6,
+0.2313 -0.2288 0.6,
+0.459 -0.209 0.6,
+0.4986 -0.0011 0.6,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE green
+Coordinate3 { point [
+0.231 -0.231 0.6,
+0.2112 -0.4587 0.6,
+0.4191 -0.4191 0.6,
+0.4587 -0.2112 0.6,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE green
+Coordinate3 { point [
+0.0011 -0.2511 0.6,
+0.0011 -0.4986 0.6,
+0.209 -0.459 0.6,
+0.2288 -0.2313 0.6,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE green
+Coordinate3 { point [
+0.0012 -0.0012 0.6,
+0.0012 -0.2487 0.6,
+0.2289 -0.2289 0.6,
+0.2487 -0.0012 0.6,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE green
+Coordinate3 { point [
+0.211588 -0.460651 0.6,
+0.282648 -0.65546 0.6,
+0.561607 -0.563169 0.6,
+0.419488 -0.421051 0.6,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE green
+Coordinate3 { point [
+0.283724 -0.657162 0.6,
+0.354783 -0.851971 0.6,
+0.704801 -0.706988 0.6,
+0.562683 -0.564871 0.6,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE green
+Coordinate3 { point [
+0.00158833 -0.750651 0.6,
+0.00158833 -0.998151 0.6,
+0.351607 -0.853169 0.6,
+0.280548 -0.65836 0.6,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE green
+Coordinate3 { point [
+0.00122944 -0.500917 0.6,
+0.00122944 -0.748417 0.6,
+0.280189 -0.656126 0.6,
+0.209129 -0.461317 0.6,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE green
+Coordinate3 { point [
+0.750651 -0.00158833 0.6,
+0.65836 -0.280548 0.6,
+0.853169 -0.351607 0.6,
+0.998151 -0.00158833 0.6,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE green
+Coordinate3 { point [
+0.657162 -0.283724 0.6,
+0.564871 -0.562683 0.6,
+0.706988 -0.704801 0.6,
+0.851971 -0.354783 0.6,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE green
+Coordinate3 { point [
+0.460651 -0.211588 0.6,
+0.421051 -0.419488 0.6,
+0.563169 -0.561607 0.6,
+0.65546 -0.282648 0.6,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE green
+Coordinate3 { point [
+0.500917 -0.00122944 0.6,
+0.461317 -0.209129 0.6,
+0.656126 -0.280189 0.6,
+0.748417 -0.00122944 0.6,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+Separator{USE green
+Translation{translation -0.210000 0.460000 0.600000}
+USE ScaleToPixels
+Sphere{radius 0.02}}
+Separator{USE green
+Translation{translation -0.460000 0.210000 0.600000}
+USE ScaleToPixels
+Sphere{radius 0.02}}
+Separator{USE green
+Translation{translation -0.250000 0.000000 0.600000}
+USE ScaleToPixels
+Sphere{radius 0.02}}
+Separator{USE green
+Translation{translation -0.230000 0.230000 0.600000}
+USE ScaleToPixels
+Sphere{radius 0.02}}
+Separator{USE green
+Translation{translation 0.000000 0.750000 0.600000}
+USE ScaleToPixels
+Sphere{radius 0.02}}
+Separator{USE green
+Translation{translation -0.353554 0.853554 0.600000}
+USE ScaleToPixels
+Sphere{radius 0.02}}
+Separator{USE green
+Translation{translation -0.563554 0.563554 0.600000}
+USE ScaleToPixels
+Sphere{radius 0.02}}
+Separator{USE green
+Translation{translation -0.281777 0.656777 0.600000}
+USE ScaleToPixels
+Sphere{radius 0.02}}
+Separator{USE green
+Translation{translation 0.000000 0.250000 0.600000}
+USE ScaleToPixels
+Sphere{radius 0.02}}
+Separator{USE green
+Translation{translation -0.853554 0.353554 0.600000}
+USE ScaleToPixels
+Sphere{radius 0.02}}
+Separator{USE green
+Translation{translation -0.750000 0.000000 0.600000}
+USE ScaleToPixels
+Sphere{radius 0.02}}
+Separator{USE green
+Translation{translation -0.656777 0.281777 0.600000}
+USE ScaleToPixels
+Sphere{radius 0.02}}
+Separator{USE green
+Translation{translation 0.250000 0.000000 0.600000}
+USE ScaleToPixels
+Sphere{radius 0.02}}
+Separator{USE green
+Translation{translation 0.460000 0.210000 0.600000}
+USE ScaleToPixels
+Sphere{radius 0.02}}
+Separator{USE green
+Translation{translation 0.210000 0.460000 0.600000}
+USE ScaleToPixels
+Sphere{radius 0.02}}
+Separator{USE green
+Translation{translation 0.230000 0.230000 0.600000}
+USE ScaleToPixels
+Sphere{radius 0.02}}
+Separator{USE green
+Translation{translation 0.563554 0.563554 0.600000}
+USE ScaleToPixels
+Sphere{radius 0.02}}
+Separator{USE green
+Translation{translation 0.353554 0.853554 0.600000}
+USE ScaleToPixels
+Sphere{radius 0.02}}
+Separator{USE green
+Translation{translation 0.281777 0.656777 0.600000}
+USE ScaleToPixels
+Sphere{radius 0.02}}
+Separator{USE green
+Translation{translation -0.460000 -0.210000 0.600000}
+USE ScaleToPixels
+Sphere{radius 0.02}}
+Separator{USE green
+Translation{translation -0.210000 -0.460000 0.600000}
+USE ScaleToPixels
+Sphere{radius 0.02}}
+Separator{USE green
+Translation{translation 0.000000 -0.250000 0.600000}
+USE ScaleToPixels
+Sphere{radius 0.02}}
+Separator{USE green
+Translation{translation -0.230000 -0.230000 0.600000}
+USE ScaleToPixels
+Sphere{radius 0.02}}
+Separator{USE green
+Translation{translation -0.853554 -0.353554 0.600000}
+USE ScaleToPixels
+Sphere{radius 0.02}}
+Separator{USE green
+Translation{translation -0.563554 -0.563554 0.600000}
+USE ScaleToPixels
+Sphere{radius 0.02}}
+Separator{USE green
+Translation{translation -0.656777 -0.281777 0.600000}
+USE ScaleToPixels
+Sphere{radius 0.02}}
+Separator{USE green
+Translation{translation 0.210000 -0.460000 0.600000}
+USE ScaleToPixels
+Sphere{radius 0.02}}
+Separator{USE green
+Translation{translation 0.460000 -0.210000 0.600000}
+USE ScaleToPixels
+Sphere{radius 0.02}}
+Separator{USE green
+Translation{translation 0.230000 -0.230000 0.600000}
+USE ScaleToPixels
+Sphere{radius 0.02}}
+Separator{USE green
+Translation{translation 0.853554 0.353554 0.600000}
+USE ScaleToPixels
+Sphere{radius 0.02}}
+Separator{USE green
+Translation{translation 0.750000 0.000000 0.600000}
+USE ScaleToPixels
+Sphere{radius 0.02}}
+Separator{USE green
+Translation{translation 0.656777 0.281777 0.600000}
+USE ScaleToPixels
+Sphere{radius 0.02}}
+Separator{USE green
+Translation{translation 0.656777 -0.281777 0.600000}
+USE ScaleToPixels
+Sphere{radius 0.02}}
+Separator{USE green
+Translation{translation 0.000000 -0.750000 0.600000}
+USE ScaleToPixels
+Sphere{radius 0.02}}
+Separator{USE green
+Translation{translation -0.281777 -0.656777 0.600000}
+USE ScaleToPixels
+Sphere{radius 0.02}}
+Separator{USE green
+Translation{translation 0.281777 -0.656777 0.600000}
+USE ScaleToPixels
+Sphere{radius 0.02}}
+USE yellow
+Coordinate3 { point [
+0.000839024 0.875292 1.1,
+0.158084 0.815974 1.1,
+0.175848 0.926551 1.1,
+0.000839024 0.999042 1.1,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE yellow
+Coordinate3 { point [
+0.159762 0.815309 1.1,
+0.317005 0.75599 1.1,
+0.352536 0.853395 1.1,
+0.177526 0.925886 1.1,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE yellow
+Coordinate3 { point [
+0.141727 0.70368 1.1,
+0.281207 0.657535 1.1,
+0.316736 0.754939 1.1,
+0.159493 0.814258 1.1,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE yellow
+Coordinate3 { point [
+0.000749302 0.750359 1.1,
+0.140228 0.704213 1.1,
+0.157994 0.814791 1.1,
+0.000749302 0.874109 1.1,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE yellow
+Coordinate3 { point [
+0.000659579 0.625425 1.1,
+0.122374 0.592452 1.1,
+0.140139 0.703029 1.1,
+0.000659579 0.749175 1.1,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE yellow
+Coordinate3 { point [
+0.123693 0.592053 1.1,
+0.245408 0.55908 1.1,
+0.280938 0.656485 1.1,
+0.141458 0.70263 1.1,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE yellow
+Coordinate3 { point [
+0.10566 0.480425 1.1,
+0.20961 0.460625 1.1,
+0.245139 0.558029 1.1,
+0.123424 0.591002 1.1,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE yellow
+Coordinate3 { point [
+0.000569859 0.500492 1.1,
+0.10452 0.480692 1.1,
+0.122284 0.591269 1.1,
+0.000569859 0.624242 1.1,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE yellow
+Coordinate3 { point [
+-0.375537 0.000537499 1.1,
+-0.360687 0.109438 1.1,
+-0.479488 0.104488 1.1,
+-0.499288 0.000537499 1.1,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE yellow
+Coordinate3 { point [
+-0.360512 0.110512 1.1,
+-0.345662 0.219413 1.1,
+-0.459513 0.209513 1.1,
+-0.479313 0.105562 1.1,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE yellow
+Coordinate3 { point [
+-0.240537 0.115537 1.1,
+-0.230637 0.229388 1.1,
+-0.344488 0.219488 1.1,
+-0.359338 0.110587 1.1,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE yellow
+Coordinate3 { point [
+-0.250562 0.000562499 1.1,
+-0.240662 0.114413 1.1,
+-0.359463 0.109463 1.1,
+-0.374313 0.000562499 1.1,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE yellow
+Coordinate3 { point [
+-0.345487 0.220487 1.1,
+-0.330637 0.329388 1.1,
+-0.439538 0.314538 1.1,
+-0.459338 0.210587 1.1,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE yellow
+Coordinate3 { point [
+-0.330462 0.330462 1.1,
+-0.315612 0.439363 1.1,
+-0.419563 0.419563 1.1,
+-0.439363 0.315612 1.1,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE yellow
+Coordinate3 { point [
+-0.220487 0.345487 1.1,
+-0.210587 0.459338 1.1,
+-0.314538 0.439538 1.1,
+-0.329388 0.330637 1.1,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE yellow
+Coordinate3 { point [
+-0.230512 0.230512 1.1,
+-0.220612 0.344363 1.1,
+-0.329513 0.329513 1.1,
+-0.344363 0.220612 1.1,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE yellow
+Coordinate3 { point [
+-0.115537 0.240537 1.1,
+-0.110587 0.359338 1.1,
+-0.219488 0.344488 1.1,
+-0.229388 0.230637 1.1,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE yellow
+Coordinate3 { point [
+-0.110512 0.360512 1.1,
+-0.105562 0.479313 1.1,
+-0.209513 0.459513 1.1,
+-0.219413 0.345662 1.1,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE yellow
+Coordinate3 { point [
+-0.000537499 0.375537 1.1,
+-0.000537499 0.499288 1.1,
+-0.104488 0.479488 1.1,
+-0.109438 0.360687 1.1,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE yellow
+Coordinate3 { point [
+-0.000562499 0.250562 1.1,
+-0.000562499 0.374313 1.1,
+-0.109463 0.359463 1.1,
+-0.114413 0.240662 1.1,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE yellow
+Coordinate3 { point [
+-0.125587 0.000587499 1.1,
+-0.120637 0.119388 1.1,
+-0.239438 0.114438 1.1,
+-0.249338 0.000587499 1.1,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE yellow
+Coordinate3 { point [
+-0.120562 0.120562 1.1,
+-0.115612 0.239363 1.1,
+-0.229463 0.229463 1.1,
+-0.239363 0.115612 1.1,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE yellow
+Coordinate3 { point [
+-0.000587499 0.125587 1.1,
+-0.000587499 0.249338 1.1,
+-0.114438 0.239438 1.1,
+-0.119388 0.120637 1.1,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE yellow
+Coordinate3 { point [
+-0.000612499 0.000612499 1.1,
+-0.000612499 0.124363 1.1,
+-0.119413 0.119413 1.1,
+-0.124363 0.000612499 1.1,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE yellow
+Coordinate3 { point [
+-0.315839 0.440292 1.1,
+-0.369134 0.524524 1.1,
+-0.490848 0.491551 1.1,
+-0.419789 0.420492 1.1,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE yellow
+Coordinate3 { point [
+-0.369762 0.525309 1.1,
+-0.423055 0.60954 1.1,
+-0.562536 0.563395 1.1,
+-0.491476 0.492336 1.1,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE yellow
+Coordinate3 { point [
+-0.246727 0.55868 1.1,
+-0.282257 0.656085 1.1,
+-0.421736 0.609939 1.1,
+-0.368443 0.525708 1.1,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE yellow
+Coordinate3 { point [
+-0.210749 0.460359 1.1,
+-0.246278 0.557763 1.1,
+-0.367994 0.524791 1.1,
+-0.314699 0.440559 1.1,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE yellow
+Coordinate3 { point [
+-0.423683 0.610324 1.1,
+-0.476978 0.694556 1.1,
+-0.634222 0.635237 1.1,
+-0.563164 0.564179 1.1,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE yellow
+Coordinate3 { point [
+-0.477606 0.695341 1.1,
+-0.5309 0.779572 1.1,
+-0.705909 0.707081 1.1,
+-0.63485 0.636022 1.1,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE yellow
+Coordinate3 { point [
+-0.318683 0.755324 1.1,
+-0.354214 0.852729 1.1,
+-0.529222 0.780237 1.1,
+-0.475928 0.696006 1.1,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE yellow
+Coordinate3 { point [
+-0.282706 0.657003 1.1,
+-0.318235 0.754407 1.1,
+-0.47548 0.695089 1.1,
+-0.422185 0.610857 1.1,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE yellow
+Coordinate3 { point [
+-0.141727 0.70368 1.1,
+-0.159493 0.814258 1.1,
+-0.316736 0.754939 1.1,
+-0.281207 0.657535 1.1,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE yellow
+Coordinate3 { point [
+-0.159762 0.815309 1.1,
+-0.177526 0.925886 1.1,
+-0.352536 0.853395 1.1,
+-0.317005 0.75599 1.1,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE yellow
+Coordinate3 { point [
+-0.000839024 0.875292 1.1,
+-0.000839024 0.999042 1.1,
+-0.175848 0.926551 1.1,
+-0.158084 0.815974 1.1,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE yellow
+Coordinate3 { point [
+-0.000749302 0.750359 1.1,
+-0.000749302 0.874109 1.1,
+-0.157994 0.814791 1.1,
+-0.140228 0.704213 1.1,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE yellow
+Coordinate3 { point [
+-0.10566 0.480425 1.1,
+-0.123424 0.591002 1.1,
+-0.245139 0.558029 1.1,
+-0.20961 0.460625 1.1,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE yellow
+Coordinate3 { point [
+-0.123693 0.592053 1.1,
+-0.141458 0.70263 1.1,
+-0.280938 0.656485 1.1,
+-0.245408 0.55908 1.1,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE yellow
+Coordinate3 { point [
+-0.000659579 0.625425 1.1,
+-0.000659579 0.749175 1.1,
+-0.140139 0.703029 1.1,
+-0.122374 0.592452 1.1,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE yellow
+Coordinate3 { point [
+-0.000569859 0.500492 1.1,
+-0.000569859 0.624242 1.1,
+-0.122284 0.591269 1.1,
+-0.10452 0.480692 1.1,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE yellow
+Coordinate3 { point [
+-0.875292 0.000839024 1.1,
+-0.815974 0.158084 1.1,
+-0.926551 0.175848 1.1,
+-0.999042 0.000839024 1.1,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE yellow
+Coordinate3 { point [
+-0.815309 0.159762 1.1,
+-0.75599 0.317005 1.1,
+-0.853395 0.352536 1.1,
+-0.925886 0.177526 1.1,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE yellow
+Coordinate3 { point [
+-0.70368 0.141727 1.1,
+-0.657535 0.281207 1.1,
+-0.754939 0.316736 1.1,
+-0.814258 0.159493 1.1,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE yellow
+Coordinate3 { point [
+-0.750359 0.000749302 1.1,
+-0.704213 0.140228 1.1,
+-0.814791 0.157994 1.1,
+-0.874109 0.000749302 1.1,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE yellow
+Coordinate3 { point [
+-0.755324 0.318683 1.1,
+-0.696006 0.475928 1.1,
+-0.780237 0.529222 1.1,
+-0.852729 0.354214 1.1,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE yellow
+Coordinate3 { point [
+-0.695341 0.477606 1.1,
+-0.636022 0.63485 1.1,
+-0.707081 0.705909 1.1,
+-0.779572 0.5309 1.1,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE yellow
+Coordinate3 { point [
+-0.610324 0.423683 1.1,
+-0.564179 0.563164 1.1,
+-0.635237 0.634222 1.1,
+-0.694556 0.476978 1.1,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE yellow
+Coordinate3 { point [
+-0.657003 0.282706 1.1,
+-0.610857 0.422185 1.1,
+-0.695089 0.47548 1.1,
+-0.754407 0.318235 1.1,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE yellow
+Coordinate3 { point [
+-0.55868 0.246727 1.1,
+-0.525708 0.368443 1.1,
+-0.609939 0.421736 1.1,
+-0.656085 0.282257 1.1,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE yellow
+Coordinate3 { point [
+-0.525309 0.369762 1.1,
+-0.492336 0.491476 1.1,
+-0.563395 0.562536 1.1,
+-0.60954 0.423055 1.1,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE yellow
+Coordinate3 { point [
+-0.440292 0.315839 1.1,
+-0.420492 0.419789 1.1,
+-0.491551 0.490848 1.1,
+-0.524524 0.369134 1.1,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE yellow
+Coordinate3 { point [
+-0.460359 0.210749 1.1,
+-0.440559 0.314699 1.1,
+-0.524791 0.367994 1.1,
+-0.557763 0.246278 1.1,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE yellow
+Coordinate3 { point [
+-0.625425 0.000659579 1.1,
+-0.592452 0.122374 1.1,
+-0.703029 0.140139 1.1,
+-0.749175 0.000659579 1.1,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE yellow
+Coordinate3 { point [
+-0.592053 0.123693 1.1,
+-0.55908 0.245408 1.1,
+-0.656485 0.280938 1.1,
+-0.70263 0.141458 1.1,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE yellow
+Coordinate3 { point [
+-0.480425 0.10566 1.1,
+-0.460625 0.20961 1.1,
+-0.558029 0.245139 1.1,
+-0.591002 0.123424 1.1,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE yellow
+Coordinate3 { point [
+-0.500492 0.000569859 1.1,
+-0.480692 0.10452 1.1,
+-0.591269 0.122284 1.1,
+-0.624242 0.000569859 1.1,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+Separator{USE yellow
+Translation{translation -0.140888 0.703388 1.100000}
+USE ScaleToPixels
+Sphere{radius 0.02}}
+Separator{USE yellow
+Translation{translation -0.440000 0.315000 1.100000}
+USE ScaleToPixels
+Sphere{radius 0.02}}
+Separator{USE yellow
+Translation{translation -0.610165 0.422665 1.100000}
+USE ScaleToPixels
+Sphere{radius 0.02}}
+Separator{USE yellow
+Translation{translation -0.245888 0.558388 1.100000}
+USE ScaleToPixels
+Sphere{radius 0.02}}
+Separator{USE yellow
+Translation{translation -0.122944 0.591694 1.100000}
+USE ScaleToPixels
+Sphere{radius 0.02}}
+Separator{USE yellow
+Translation{translation 0.000000 0.875000 1.100000}
+USE ScaleToPixels
+Sphere{radius 0.02}}
+Separator{USE yellow
+Translation{translation -0.176777 0.926777 1.100000}
+USE ScaleToPixels
+Sphere{radius 0.02}}
+Separator{USE yellow
+Translation{translation -0.317665 0.755165 1.100000}
+USE ScaleToPixels
+Sphere{radius 0.02}}
+Separator{USE yellow
+Translation{translation -0.158833 0.815083 1.100000}
+USE ScaleToPixels
+Sphere{radius 0.02}}
+Separator{USE yellow
+Translation{translation -0.525083 0.368833 1.100000}
+USE ScaleToPixels
+Sphere{radius 0.02}}
+Separator{USE yellow
+Translation{translation 0.000000 0.625000 1.100000}
+USE ScaleToPixels
+Sphere{radius 0.02}}
+Separator{USE yellow
+Translation{translation -0.530330 0.780330 1.100000}
+USE ScaleToPixels
+Sphere{radius 0.02}}
+Separator{USE yellow
+Translation{translation -0.476498 0.695248 1.100000}
+USE ScaleToPixels
+Sphere{radius 0.02}}
+Separator{USE yellow
+Translation{translation -0.755165 0.317665 1.100000}
+USE ScaleToPixels
+Sphere{radius 0.02}}
+Separator{USE yellow
+Translation{translation -0.780330 0.530330 1.100000}
+USE ScaleToPixels
+Sphere{radius 0.02}}
+Separator{USE yellow
+Translation{translation -0.635330 0.635330 1.100000}
+USE ScaleToPixels
+Sphere{radius 0.02}}
+Separator{USE yellow
+Translation{translation -0.558388 0.245888 1.100000}
+USE ScaleToPixels
+Sphere{radius 0.02}}
+Separator{USE yellow
+Translation{translation -0.105000 0.480000 1.100000}
+USE ScaleToPixels
+Sphere{radius 0.02}}
+Separator{USE yellow
+Translation{translation -0.695248 0.476498 1.100000}
+USE ScaleToPixels
+Sphere{radius 0.02}}
+Separator{USE yellow
+Translation{translation -0.491777 0.491777 1.100000}
+USE ScaleToPixels
+Sphere{radius 0.02}}
+Separator{USE yellow
+Translation{translation -0.315000 0.440000 1.100000}
+USE ScaleToPixels
+Sphere{radius 0.02}}
+Separator{USE yellow
+Translation{translation -0.368833 0.525083 1.100000}
+USE ScaleToPixels
+Sphere{radius 0.02}}
+Separator{USE yellow
+Translation{translation -0.422665 0.610165 1.100000}
+USE ScaleToPixels
+Sphere{radius 0.02}}
+Separator{USE yellow
+Translation{translation -0.703388 0.140888 1.100000}
+USE ScaleToPixels
+Sphere{radius 0.02}}
+Separator{USE yellow
+Translation{translation -0.591694 0.122944 1.100000}
+USE ScaleToPixels
+Sphere{radius 0.02}}
+Separator{USE yellow
+Translation{translation -0.926777 0.176777 1.100000}
+USE ScaleToPixels
+Sphere{radius 0.02}}
+Separator{USE yellow
+Translation{translation -0.815083 0.158833 1.100000}
+USE ScaleToPixels
+Sphere{radius 0.02}}
+Separator{USE yellow
+Translation{translation 0.158833 0.815083 1.100000}
+USE ScaleToPixels
+Sphere{radius 0.02}}
+Separator{USE yellow
+Translation{translation 0.140888 0.703388 1.100000}
+USE ScaleToPixels
+Sphere{radius 0.02}}
+Separator{USE yellow
+Translation{translation -0.220000 0.345000 1.100000}
+USE ScaleToPixels
+Sphere{radius 0.02}}
+Separator{USE yellow
+Translation{translation 0.122944 0.591694 1.100000}
+USE ScaleToPixels
+Sphere{radius 0.02}}
+Separator{USE yellow
+Translation{translation -0.115000 0.240000 1.100000}
+USE ScaleToPixels
+Sphere{radius 0.02}}
+Separator{USE yellow
+Translation{translation -0.480000 0.105000 1.100000}
+USE ScaleToPixels
+Sphere{radius 0.02}}
+Separator{USE yellow
+Translation{translation -0.110000 0.360000 1.100000}
+USE ScaleToPixels
+Sphere{radius 0.02}}
+Separator{USE yellow
+Translation{translation -0.345000 0.220000 1.100000}
+USE ScaleToPixels
+Sphere{radius 0.02}}
+Separator{USE yellow
+Translation{translation -0.330000 0.330000 1.100000}
+USE ScaleToPixels
+Sphere{radius 0.02}}
+Separator{USE yellow
+Translation{translation -0.360000 0.110000 1.100000}
+USE ScaleToPixels
+Sphere{radius 0.02}}
+Separator{USE yellow
+Translation{translation -0.240000 0.115000 1.100000}
+USE ScaleToPixels
+Sphere{radius 0.02}}
+Separator{USE yellow
+Translation{translation -0.120000 0.120000 1.100000}
+USE ScaleToPixels
+Sphere{radius 0.02}}
+USE cyan
+Coordinate3 { point [
+-0.493629 0.58693 1.6,
+-0.524718 0.625753 1.6,
+-0.598899 0.599387 1.6,
+-0.56337 0.563858 1.6,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE cyan
+Coordinate3 { point [
+-0.525055 0.626129 1.6,
+-0.556143 0.664951 1.6,
+-0.634765 0.635292 1.6,
+-0.599236 0.599763 1.6,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE cyan
+Coordinate3 { point [
+-0.450101 0.652777 1.6,
+-0.476749 0.694894 1.6,
+-0.555371 0.665234 1.6,
+-0.524283 0.626412 1.6,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE cyan
+Coordinate3 { point [
+-0.423163 0.610253 1.6,
+-0.44981 0.652368 1.6,
+-0.523992 0.626003 1.6,
+-0.492903 0.58718 1.6,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE cyan
+Coordinate3 { point [
+-0.556479 0.665327 1.6,
+-0.587567 0.70415 1.6,
+-0.670631 0.671198 1.6,
+-0.635101 0.635668 1.6,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE cyan
+Coordinate3 { point [
+-0.587904 0.704525 1.6,
+-0.618993 0.743348 1.6,
+-0.706497 0.707102 1.6,
+-0.670968 0.671573 1.6,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE cyan
+Coordinate3 { point [
+-0.503979 0.737827 1.6,
+-0.530626 0.779943 1.6,
+-0.618131 0.743698 1.6,
+-0.587042 0.704875 1.6,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE cyan
+Coordinate3 { point [
+-0.477041 0.695303 1.6,
+-0.503688 0.737418 1.6,
+-0.586751 0.704466 1.6,
+-0.555663 0.665643 1.6,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE cyan
+Coordinate3 { point [
+-0.397601 0.725277 1.6,
+-0.419808 0.770687 1.6,
+-0.502871 0.737734 1.6,
+-0.476224 0.695619 1.6,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE cyan
+Coordinate3 { point [
+-0.420055 0.771129 1.6,
+-0.442261 0.816538 1.6,
+-0.529765 0.780292 1.6,
+-0.503118 0.738176 1.6,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE cyan
+Coordinate3 { point [
+-0.336129 0.80443 1.6,
+-0.353895 0.853133 1.6,
+-0.441399 0.816887 1.6,
+-0.419193 0.771478 1.6,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE cyan
+Coordinate3 { point [
+-0.318163 0.755253 1.6,
+-0.335928 0.803955 1.6,
+-0.418992 0.771003 1.6,
+-0.396785 0.725593 1.6,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE cyan
+Coordinate3 { point [
+-0.352697 0.633575 1.6,
+-0.374902 0.678985 1.6,
+-0.449083 0.652618 1.6,
+-0.422436 0.610503 1.6,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE cyan
+Coordinate3 { point [
+-0.375149 0.679427 1.6,
+-0.397355 0.724835 1.6,
+-0.475978 0.695177 1.6,
+-0.44933 0.65306 1.6,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE cyan
+Coordinate3 { point [
+-0.300197 0.706075 1.6,
+-0.317961 0.754778 1.6,
+-0.396583 0.725118 1.6,
+-0.374377 0.67971 1.6,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE cyan
+Coordinate3 { point [
+-0.28223 0.656898 1.6,
+-0.299995 0.7056 1.6,
+-0.374175 0.679235 1.6,
+-0.35197 0.633825 1.6,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE cyan
+Coordinate3 { point [
+-0.211764 0.680221 1.6,
+-0.225087 0.732216 1.6,
+-0.299268 0.70585 1.6,
+-0.281503 0.657148 1.6,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE cyan
+Coordinate3 { point [
+-0.225244 0.732724 1.6,
+-0.238568 0.78472 1.6,
+-0.317189 0.755061 1.6,
+-0.299425 0.706358 1.6,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE cyan
+Coordinate3 { point [
+-0.150291 0.759373 1.6,
+-0.159174 0.814662 1.6,
+-0.237796 0.785003 1.6,
+-0.224472 0.733007 1.6,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE cyan
+Coordinate3 { point [
+-0.141296 0.703542 1.6,
+-0.150179 0.758831 1.6,
+-0.22436 0.732465 1.6,
+-0.211037 0.68047 1.6,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE cyan
+Coordinate3 { point [
+-0.238725 0.785228 1.6,
+-0.252048 0.837223 1.6,
+-0.335111 0.804271 1.6,
+-0.317346 0.755569 1.6,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE cyan
+Coordinate3 { point [
+-0.252205 0.837732 1.6,
+-0.265528 0.889728 1.6,
+-0.353034 0.853483 1.6,
+-0.335268 0.80478 1.6,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE cyan
+Coordinate3 { point [
+-0.168281 0.871034 1.6,
+-0.177163 0.926323 1.6,
+-0.264667 0.890077 1.6,
+-0.251344 0.838081 1.6,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE cyan
+Coordinate3 { point [
+-0.159286 0.815204 1.6,
+-0.168168 0.870493 1.6,
+-0.251231 0.83754 1.6,
+-0.237908 0.785545 1.6,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE cyan
+Coordinate3 { point [
+-0.737827 0.503979 1.6,
+-0.704875 0.587042 1.6,
+-0.743698 0.618131 1.6,
+-0.779943 0.530626 1.6,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE cyan
+Coordinate3 { point [
+-0.704525 0.587904 1.6,
+-0.671573 0.670968 1.6,
+-0.707102 0.706497 1.6,
+-0.743348 0.618993 1.6,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE cyan
+Coordinate3 { point [
+-0.665327 0.556479 1.6,
+-0.635668 0.635101 1.6,
+-0.671198 0.670631 1.6,
+-0.70415 0.587567 1.6,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE cyan
+Coordinate3 { point [
+-0.695303 0.477041 1.6,
+-0.665643 0.555663 1.6,
+-0.704466 0.586751 1.6,
+-0.737418 0.503688 1.6,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE cyan
+Coordinate3 { point [
+-0.652777 0.450101 1.6,
+-0.626412 0.524283 1.6,
+-0.665234 0.555371 1.6,
+-0.694894 0.476749 1.6,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE cyan
+Coordinate3 { point [
+-0.626129 0.525055 1.6,
+-0.599763 0.599236 1.6,
+-0.635292 0.634765 1.6,
+-0.664951 0.556143 1.6,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE cyan
+Coordinate3 { point [
+-0.58693 0.493629 1.6,
+-0.563858 0.56337 1.6,
+-0.599387 0.598899 1.6,
+-0.625753 0.524718 1.6,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+USE cyan
+Coordinate3 { point [
+-0.610253 0.423163 1.6,
+-0.58718 0.492903 1.6,
+-0.626003 0.523992 1.6,
+-0.652368 0.44981 1.6,
+] }
+IndexedFaceSet{coordIndex[0,1,2,3]}
+Separator{USE cyan
+Translation{translation -0.555914 0.665289 1.600000}
+USE ScaleToPixels
+Sphere{radius 0.02}}
+Separator{USE cyan
+Translation{translation -0.441942 0.816942 1.600000}
+USE ScaleToPixels
+Sphere{radius 0.02}}
+Separator{USE cyan
+Translation{translation -0.335609 0.804359 1.600000}
+USE ScaleToPixels
+Sphere{radius 0.02}}
+Separator{USE cyan
+Translation{translation -0.419512 0.771074 1.600000}
+USE ScaleToPixels
+Sphere{radius 0.02}}
+Separator{USE cyan
+Translation{translation -0.524512 0.626074 1.600000}
+USE ScaleToPixels
+Sphere{radius 0.02}}
+Separator{USE cyan
+Translation{translation -0.503414 0.737789 1.600000}
+USE ScaleToPixels
+Sphere{radius 0.02}}
+Separator{USE cyan
+Translation{translation -0.238249 0.785124 1.600000}
+USE ScaleToPixels
+Sphere{radius 0.02}}
+Separator{USE cyan
+Translation{translation -0.599442 0.599442 1.600000}
+USE ScaleToPixels
+Sphere{radius 0.02}}
+Separator{USE cyan
+Translation{translation -0.299721 0.705971 1.600000}
+USE ScaleToPixels
+Sphere{radius 0.02}}
+Separator{USE cyan
+Translation{translation -0.671219 0.671219 1.600000}
+USE ScaleToPixels
+Sphere{radius 0.02}}
+Separator{USE cyan
+Translation{translation -0.618719 0.743719 1.600000}
+USE ScaleToPixels
+Sphere{radius 0.02}}
+Separator{USE cyan
+Translation{translation -0.397081 0.725206 1.600000}
+USE ScaleToPixels
+Sphere{radius 0.02}}
+Separator{USE cyan
+Translation{translation -0.665289 0.555914 1.600000}
+USE ScaleToPixels
+Sphere{radius 0.02}}
+Separator{USE cyan
+Translation{translation -0.224791 0.732603 1.600000}
+USE ScaleToPixels
+Sphere{radius 0.02}}
+Separator{USE cyan
+Translation{translation -0.449581 0.652706 1.600000}
+USE ScaleToPixels
+Sphere{radius 0.02}}
+Separator{USE cyan
+Translation{translation -0.374651 0.679339 1.600000}
+USE ScaleToPixels
+Sphere{radius 0.02}}
+Separator{USE cyan
+Translation{translation -0.704504 0.587316 1.600000}
+USE ScaleToPixels
+Sphere{radius 0.02}}
+Separator{USE cyan
+Translation{translation -0.251707 0.837644 1.600000}
+USE ScaleToPixels
+Sphere{radius 0.02}}
+Separator{USE cyan
+Translation{translation -0.626074 0.524512 1.600000}
+USE ScaleToPixels
+Sphere{radius 0.02}}
+Separator{USE cyan
+Translation{translation -0.587316 0.704504 1.600000}
+USE ScaleToPixels
+Sphere{radius 0.02}}
+}
+ # end-of-data

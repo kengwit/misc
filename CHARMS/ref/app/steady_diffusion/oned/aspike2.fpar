@@ -1,0 +1,81 @@
+! This is a sample input file for famuls.
+!   
+  obj algorithms
+    obj steady_diffusion
+      obj aspike2 ! instance
+        ! the algorithm should work with submeshes of this mesh
+        param gmesh = m1
+        ! and here are the submeshes on which it should operate
+        param gsubmeshes = sm1
+        !
+        obj gcell_groups
+          obj gg1
+            param implementation = default
+            param material = generic_heat_diffusion
+          end
+        end
+        !
+        param les = default_les
+        obj essential_bcs
+          param ebc_file = aspike2.ebc
+        end
+        param print_sol = true
+        obj adapt
+          param adaptive = true
+        end
+      end
+    end
+    obj errest
+      obj aspike2
+        obj gcell_groups
+          obj gg1
+            param implementation = default
+          end
+        end
+      end
+    end
+    obj gradation
+      obj aspike2
+        param mesh_size_func = 0.0001+0.2*(x-4)^2
+      end
+    end
+    obj refine
+      obj aspike2
+        param ref_fraction = 0.25
+      end
+    end
+  end
+
+  obj gmeshes
+    obj m1
+      param fen_file = aspike2.fen
+      param gsubmeshes = sm1
+    end
+  end
+
+  obj gsubmeshes
+    obj sm1
+      param gcell_groups = gg1
+    end
+  end
+
+  obj gcell_groups
+    obj gg1
+      param type = line_l2
+      param conn_file = aspike2-gg1.conn
+    end
+  end
+
+  obj materials
+    obj generic_heat_diffusion
+      param type = diffusion_iso 
+      param conductivity = ((x-4)+0.001)^2
+      param internal_heat_generation_density = 0.00003
+    end
+  end
+
+  obj les
+    obj default_les
+      param fles_solver = gep
+    end
+  end

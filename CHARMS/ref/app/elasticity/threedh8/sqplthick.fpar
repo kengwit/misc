@@ -1,0 +1,124 @@
+  obj algorithms
+    obj elasticity
+      obj sqplthick ! Square plate, clamped, w=0.0611*(PL^2/Et^3)=5.09167
+        ! the algorithm should work with submeshes of this mesh
+        param gmesh = m1
+        ! and here are the submeshes on which it should operate
+        param gsubmeshes = sm1
+        !
+        obj gcell_groups
+          obj gg1
+            param implementation = bbar ! default ! bbar
+            param material = mat1
+          end
+          obj gg2
+            param implementation = elasticity_traction_q4
+            param material = fictitious
+            param traction_load = shear
+          end
+        end
+        !
+        param les = default_les
+        obj essential_bcs
+          param ebc_file = sqpl.ebc
+        end
+        obj adapt
+          param adaptive = true
+        end
+      end
+    end
+    obj hexvue
+      obj hexvue
+        obj gcell_groups
+          obj gg1
+            param implementation = default
+          end
+          obj gg2
+            param implementation = default
+          end
+        end
+        param hexvue_file = sqplthick.hvu
+      end
+    end
+    obj gradation
+      obj sqplthick
+!        param mesh_size_func = 0.01+0.2*((y-1)^2+z^2)
+        param mesh_size_func = 0.02
+      end
+    end
+    obj errest
+      obj sqplthick
+        obj gcell_groups
+          obj gg1
+            param implementation = default
+            param material = mat1
+          end
+          obj gg2
+            param implementation = default
+            param material = fictitious
+          end
+        end
+      end
+    end
+    obj refine
+      obj sqplthick
+        param true_hierarchical = false
+        param errestim = energy 
+        param ref_fraction = 1
+        param h_over_hbar_ref = 1
+        param h_over_hbar_unref = 1
+        param max_ref_level = 6
+        param target_nbfuns = 5000
+      end
+    end
+  end
+
+  obj gmeshes
+    obj m1
+      param fen_file = sqplthick.fen
+      param gsubmeshes = sm1
+    end
+  end
+
+  obj gsubmeshes
+    obj sm1
+      param gcell_groups = gg1 gg2
+    end
+  end
+
+  obj gcell_groups
+    obj gg1
+      param type = solid_h8
+      param conn_file = sqpl-gg1.conn
+    end
+    obj gg2
+      param type = surf_q4
+      param conn_file = sqpl-gg2.conn
+    end
+  end
+
+  obj materials
+    obj mat1
+      param type = elasticity_iso
+      param E = 3e7
+      param nu = 0.3
+    end
+    obj fictitious
+      param type = elasticity_iso
+      param E = 0
+      param nu = 0 
+    end
+  end
+
+  obj loads
+    obj shear
+      param type = load_on_gcell_traction
+      param traction  = "" ""   "100000"      ! total force 100 units
+    end 
+  end
+
+  obj les
+    obj default_les
+      param fles_solver = spetsc ! gep ! smeschach ! 
+    end
+  end

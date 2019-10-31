@@ -1,0 +1,3 @@
+function "(1-x/8)*-1000+(x/8)*3000"
+box 0 0 0 0 0 0 inflate 0.001
+box 8 0 0 8 0 0 inflate 0.001

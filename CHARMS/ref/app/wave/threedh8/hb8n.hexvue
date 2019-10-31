@@ -1,0 +1,27 @@
+NEWFRAME WIDTH 480 HEIGHT 480 X 100 Y 100
+edgeflag on
+edgecolor white
+shrink 1
+hvuchattribs
+render wire
+view axes off
+view bground white
+view iso
+layer 0
+layer on   0
+layer on   1
+layer off 15
+layer on  16
+view load highbeam.view
+
+label "vx"
+HVUPICKSET 3
+HVUSETDISP 0 1 2 sxsysz 1 1 1
+! fringe 12000 16000
+fringe smooth
+fringe show_scale on
+render shade
+hvupause 1
+image junk.gif
+hvuquit
+ 

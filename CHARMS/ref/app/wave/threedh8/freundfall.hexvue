@@ -1,0 +1,28 @@
+! 
+NEWFRAME WIDTH 640 HEIGHT 200 X 100 Y 100
+edgeflag on
+edgecolor black
+shrink 1
+hvuchattribs
+!
+HVUPICKSET 9
+HVUSETDISP 0 1 2 sxsysz 1 1 1
+! 
+view axes off
+view bground white
+view load freundfall.view
+layer on   0
+layer on   1
+layer off 15
+layer on  16
+layer 0
+!
+! fit
+RENDER shade dither
+render ldir -1 2 3
+! fringe 0 140 ! for 6
+fringe -200 200 ! for 9
+fringe smooth
+VIEW REDRAW
+image junk.gif
+HVUQUIT

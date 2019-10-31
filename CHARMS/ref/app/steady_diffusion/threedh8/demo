@@ -1,0 +1,7 @@
+a.out unit -nadapt 4
+hexvue.sh unit 3
+../show_hier unit-hier3.egf
+
+a.out ringt -pc_type jacobi -ksp_type cg -nadapt 2
+hexvue.sh ringt 1
+../show_hier ring-outline.egf ringt-hier1.egf

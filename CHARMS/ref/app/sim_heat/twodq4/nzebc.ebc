@@ -1,0 +1,5 @@
+function "y*sin(x)^3+cos(x^5+y^6)"
+box -1 -1 0 1 -1 0 inflate 0.001 
+box -1 -1 0 -1  1 0 inflate 0.001
+box -1  1 0 1  1 0 inflate 0.001
+box 1  -1 0 1  1 0 inflate 0.001

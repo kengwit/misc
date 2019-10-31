@@ -1,0 +1,161 @@
+  obj algorithms
+    obj wave
+      obj bang ! instance
+        ! the algorithm should work with submeshes of this mesh
+        param gmesh = m1
+        ! and here are the submeshes on which it should operate
+        param gsubmeshes = sm1
+        !
+        obj initial_conditions
+          param u0 = "" "" ""
+          param v0 = "" "" ""
+        end
+        obj time_step
+          param dt = 0
+          param tstart = 0
+          param tend   = 0.5
+          param red_fact = .35
+          param back_track_time = .0125
+        end
+        obj watchpoints
+          param list = "w1" "w2"
+          param time_between_outputs = 0 
+          param time_between_graphics = 0.025
+          param buffer_size = 20
+          obj w1
+           param gcell_id = 1
+           param param_loc = -1 1 1
+           param var = "ux" "uy" "uz" "vx" "vy" "vz" "von_mises" "sigma_xx" "sigma_yy" "sigma_zz" "sigma_xy" "sigma_xz"
+          end
+          obj w2
+           param gcell_id = 2
+           param param_loc = -1 1 1
+           param var = "ux" "uy" "uz" "vx" "vy" "vz" "von_mises" "sigma_xx" "sigma_yy" "sigma_zz" "sigma_xy" "sigma_xz"
+          end
+        end
+        obj gcell_groups
+          obj gg1
+            param implementation = opt
+            param material = jello
+          end
+          obj gg2
+            param implementation = wave_traction_q4
+            param material = fictitious
+            param traction_load = surcharge
+          end
+        end
+        !
+        ! param les = default_les !RAW
+        obj essential_bcs
+          param ebc_file = bang.ebc
+        end
+        obj adapt
+          param adaptive = false
+        end
+      end
+    end
+    obj hexvue
+      obj hexvue
+        obj gcell_groups
+          obj gg1
+            param implementation = default
+          end
+          obj gg2
+            param implementation = default
+          end
+        end
+        param hexvue_file = bang.hvu
+      end
+    end
+    obj xhexvue
+      obj bang
+        obj gcell_groups
+          obj gg1
+            param implementation = default
+          end
+          obj gg2
+            param implementation = default
+          end
+        end
+        param xhexvue_file = bang.xhvu
+        param quants       = "ux" "uy" "uz" "vx" "vy" "vz" "von_mises" "sigma_xx" "sigma_yy" "sigma_zz" "sigma_xy" "sigma_xz"
+      end
+    end
+    obj gradation
+      obj bang
+        param mesh_size_func = 0.01+0.2*((y-1)^2+z^2)
+        param mesh_size_func = 0.2
+      end
+    end
+    obj errest
+      obj bang
+        obj gcell_groups
+          obj gg1
+            param implementation = default
+            param material = jello
+          end
+          obj gg2
+            param implementation = default
+            param material = fictitious
+          end
+        end
+      end
+    end
+    obj refine
+      obj bang
+        param true_hierarchical = false
+        param errestim = energy 
+        param ref_fraction = 0.0025
+        param h_over_hbar_ref = 2
+        param h_over_hbar_unref = 0.9
+        param max_ref_level = 1
+      end
+    end
+  end
+
+  obj gmeshes
+    obj m1
+      param fen_file = bang.fen
+      param gsubmeshes = sm1
+    end
+  end
+
+  obj gsubmeshes
+    obj sm1
+      param gcell_groups = gg1 gg2
+    end
+  end
+
+  obj gcell_groups
+    obj gg1
+      param type = solid_h8
+      param conn_file = bang-gg1.conn
+    end
+    obj gg2
+      param type = surf_q4
+      param conn_file = bang-gg2.conn
+    end
+  end
+
+  obj materials
+    obj jello
+      param type = elasticity_iso
+      param E = 16000
+      param nu = 0.3 
+      param rho = 0.0078
+    end
+    obj fictitious
+      param type = elasticity_iso
+      param E = 0
+      param nu = 0 
+    end
+  end
+
+  obj loads
+    obj surcharge
+      param type = load_on_gcell_traction
+      param traction  = "" "-3.657145104*sin((pi*t/0.001))*heaviside(.001-t)" ""
+    end 
+  end
+
+  

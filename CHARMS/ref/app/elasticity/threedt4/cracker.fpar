@@ -1,0 +1,81 @@
+  obj algorithms
+    obj elasticity
+      obj cracker ! instance
+        ! the algorithm should work with submeshes of this mesh
+        param gmesh = m1
+        ! and here are the submeshes on which it should operate
+        param gsubmeshes = sm1
+        !
+        obj gcell_groups
+          obj gg1
+            param implementation = default
+            param material = jello
+          end
+        end
+        !
+        param les = default_les
+        obj essential_bcs
+          param ebc_file = cracker.ebc
+        end
+        obj adapt
+          param adaptive = true
+        end
+      end
+    end
+    obj hexvue
+      obj hexvue
+        obj gcell_groups
+          obj gg1
+            param implementation = default
+          end
+        end
+        param hexvue_file = cracker.hvu
+      end
+    end
+    obj gradation
+      obj cracker
+        param mesh_size_func = 0.01+0.2*((y-1)^2+z^2)
+!        param mesh_size_func = 0.5
+      end
+    end
+    obj refine
+      obj cracker
+        param true_hierarchical = false
+        param ref_fraction = 0.5
+      end
+    end
+  end
+
+  obj gmeshes
+    obj m1
+      param fen_file = cracker.fen
+      param gsubmeshes = sm1
+    end
+  end
+
+  obj gsubmeshes
+    obj sm1
+      param gcell_groups = gg1
+    end
+  end
+
+  obj gcell_groups
+    obj gg1
+      param type = solid_t4
+      param conn_file = cracker-gg1.conn
+    end
+  end
+
+  obj materials
+    obj jello
+      param type = elasticity_iso
+      param lambda = 100
+      param mu = 20
+    end
+  end
+
+  obj les
+    obj default_les
+      param fles_solver = spetsc ! smeschach ! 
+    end
+  end

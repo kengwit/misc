@@ -1,0 +1,91 @@
+  obj algorithms
+    obj steady_diffusion
+      obj adldomain ! instance
+        ! the algorithm should work with submeshes of this mesh
+        param gmesh = m1
+        ! and here are the submeshes on which it should operate
+        param gsubmeshes = sm1
+        !
+        obj gcell_groups
+          obj gg1
+            param implementation = default
+            param material = generic_heat_diffusion
+          end
+        end
+        !
+        param les = default_les
+        obj essential_bcs
+          param ebc_file = adldomain.ebc
+        end
+        obj adapt
+          param adaptive = true
+        end
+        param print_sol = false
+      end
+    end
+    obj hexvue
+      obj hexvue
+        obj gcell_groups
+          obj gg1
+            param implementation = default
+          end
+        end
+        param hexvue_file = adldomain.hvu
+      end
+    end
+    obj errest
+      obj adldomain
+        obj gcell_groups
+          obj gg1
+            param implementation = default
+          end
+        end
+      end
+    end
+    obj gradation
+      obj adldomain
+        param mesh_size_func = 0.001+0.0012*((x-5)^2 + (y-4)^2)
+      end
+    end
+    obj refine
+      obj adldomain
+        param ref_fraction = 0.2
+      end
+    end
+  end
+
+  obj gmeshes
+    obj m1
+      param fen_file = adldomain.fen
+      param gsubmeshes = sm1
+    end
+  end
+
+  obj gsubmeshes
+    obj sm1
+      param gcell_groups = gg1
+    end
+  end
+
+  obj gcell_groups
+    obj gg1
+      param type = surf_t3
+      param conn_file = adldomain-gg1.conn
+    end
+  end
+
+  obj materials
+    obj generic_heat_diffusion
+      param type = diffusion_iso
+      param conductivity = 100
+      param internal_heat_generation_density = 100
+    end
+  end
+
+  obj les
+    obj default_les
+      param fles_solver = spetsc
+    end
+  end
+
+

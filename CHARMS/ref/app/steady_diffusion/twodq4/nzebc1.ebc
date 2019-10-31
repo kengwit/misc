@@ -1,0 +1,5 @@
+function "-0.2*x-0.3*y"
+box -1 -1 0 1 -1 0 inflate 0.001 
+box -1 -1 0 -1  1 0 inflate 0.001
+box -1  1 0 1  1 0 inflate 0.001
+box 1  -1 0 1  1 0 inflate 0.001

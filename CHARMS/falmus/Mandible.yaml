@@ -1,0 +1,31 @@
+algorithms:
+  
+  elasticity:
+    Mandible:
+        gmesh: m1
+        gsubmeshes: sm1
+        gcell_groups:
+          gg1:
+            implementation: default
+            material: jello
+            body_load: gravity_load
+  
+  gmeshes:
+    m1:
+      fen_file: Mandible.fen
+      gsubmeshes: sm1
+
+  gsubmeshes:
+    sm1:
+      gcell_groups: gg1
+
+  gcell_groups:
+    gg1:
+      type: solid_h8
+      conn_file: Mandible-gg1.conn
+
+  refine:
+      Mandible:
+        true_hierarchical: false
+        errestim: energy 
+        ref_fraction: 0.03

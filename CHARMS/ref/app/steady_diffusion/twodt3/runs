@@ -1,0 +1,5 @@
+a.out ldomain2 -log_info -pc_type none -ksp_type cg -ksp_monitor
+a.out ldomain2 -log_info -pc_type bjacobi -ksp_type cg -ksp_monitor -ksp_rtol 1e-15
+a.out ldomain2 -log_info -pc_type none -ksp_type cg -ksp_monitor -ksp_rtol 1e-15
+
+a.out ldomain2 -log_info -pc_type bjacobi -ksp_type cg -ksp_monitor -ksp_rtol 1e-30 -ksp_maxit 300

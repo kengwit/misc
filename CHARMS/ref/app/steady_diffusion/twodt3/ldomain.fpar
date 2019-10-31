@@ -1,0 +1,76 @@
+! This is a sample input file for famuls.
+! These are files referenced from here:
+!   ldomain.fen
+!   ldomain.ebc
+!   ldomain-gg1.conn
+!   
+
+  obj algorithms
+    obj steady_diffusion
+      obj ldomain ! instance
+        ! the algorithm should work with submeshes of this mesh
+        param gmesh = m1
+        ! and here are the submeshes on which it should operate
+        param gsubmeshes = sm1
+        !
+        obj gcell_groups
+          obj gg1
+            param implementation = default
+            param material = generic_heat_diffusion
+          end
+        end
+        !
+        param les = default_les
+        obj essential_bcs
+          param ebc_file = ldomain.ebc
+        end
+        param print_sol = false
+      end
+    end
+    obj hexvue
+      obj hexvue
+        obj gcell_groups
+          obj gg1
+            param implementation = default
+          end
+        end
+        param hexvue_file = ldomain.hvu
+      end
+    end
+  end
+
+  obj gmeshes
+    obj m1
+      param fen_file = ldomain.fen
+      param gsubmeshes = sm1
+    end
+  end
+
+  obj gsubmeshes
+    obj sm1
+      param gcell_groups = gg1
+    end
+  end
+
+  obj gcell_groups
+    obj gg1
+      param type = surf_t3
+      param conn_file = ldomain-gg1.conn
+    end
+  end
+
+  obj materials
+    obj generic_heat_diffusion
+      param type = diffusion_iso
+      param conductivity = 100
+      param internal_heat_generation_density = 100
+    end
+  end
+
+  obj les
+    obj default_les
+      param fles_solver = spetsc
+    end
+  end
+
+
